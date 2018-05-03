@@ -13,13 +13,15 @@
         Abszolút szám: ekkor a méretet adjuk meg fixen
         Arányszám (*): ekkor azt adjuk meg, hogy a rendelkezésre álló helyet
                        az összes csillag arányában felosztja megjelenítéskor
-        Automatikus: ekkor a tartalom mondja meg, hogy mi a grid mérete
+        Automatikus: ekkor a környezet és a tartalom mondja meg, hogy mi a grid mérete
         -->
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
+            <!-- Ha Auto-ra állítjuk a méretet, akkor a tartalom dönti el, 
+                 hogy mekkora legyen a sor.-->
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="158"/>
@@ -28,7 +30,7 @@
         </Grid.ColumnDefinitions>
         <!-- Ez egy megjegyzés, csak a forráskódban látszik,
              a program futására nincs semmilyen befolyása -->
-        
+
         <!-- Mivel itt nem adtam meg a sor és oszlopindexet
              ÉS a <Grid></Grid> között vagyok, tehát a grid tartalmazza
              ezt a gombot. Vagyis, ez így lesz kiegészítve:
@@ -40,7 +42,12 @@
             a C# a gyűjteményeket 0-val kezdődően indexeli, így a 0. sor
             0. oszlop az valójában az első sor és első oszlopot jelöli.
         -->
-        <Button Content="Gomb x x"/>
+
+
+        <!-- Általában nem érdmes fix méretet adni, mert az nem igazodik sem a tartalomhoz
+             sem a környezethez
+        -->
+        <Button Content="Gomb x x" Width="30" Height="25"/>
 
         <!-- Ez a gomb pedig a 0. indexű (vagyis első) sorba 
              és mivel megadtuk, ezért az 1. indexű (vagyis második) 
@@ -53,14 +60,36 @@
              az 1. indexű (vagyis a második) sorba kerül, és mivel
              nem adtuk meg, így 0. indexű (vagyis első) 
              oszlopba kerül-->
-        <Button Grid.Row="1" Content="Gomb 1 x"/>
+        
+        <!-- A gomb alapértelmezésben a környezetéhez van "láncolva":
+             vizszintesen és függőlegesen a rendelkezésre álló 
+             helyet kitölti: Stretch a beállított értéke 
+             a vízszintes és függőleges igazodásnak
+        
+             Ha ehelyett egy igazítást adunk (jobbra/balra/középre
+             ill. alulra/felülre/középre), akkor a gomb méretezése 
+             a tartalom (Content) alapján megy.
+        -->
+        <Button Grid.Row="1" Content="Gomb 1 x" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" />
 
-        <Button Grid.Row="2" Content="Gomb 2 x"/>
+        <Button Grid.Row="2" Content="Gomb 2 x" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Padding="10" Margin="20"/>
 
         <!-- itt pedig már mindkét paramétert megadjuk-->
         <Button Grid.Row="1" Grid.Column="1" Content="Gomb 1 1"/>
-        <Button Grid.Row="1" Grid.Column="2" Content="Gomb 1 2"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="Gomb 2 1"/>
+        
+        <!-- A gomb a környezethez igazodik: kitölti a rendelkezésre álló helyet
+             Tudjuk margóval befolyásolni a dolgot
+        -->
+        <Button Grid.Column="2" Content="Gomb 1 2" Grid.Row="1" Margin="10"/>
+        
+        <!-- a margó testreszabható -->
+        <Button Grid.Row="2" Grid.Column="1" Content="Gomb 2 1" Margin="10,20,30,40"/>
+        
         <Button Grid.Row="2" Grid.Column="2" Content="Gomb 2 2"/>
 
 
