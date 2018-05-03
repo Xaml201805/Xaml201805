@@ -40,3 +40,6 @@ Mivel van csomagkezelőnk, a Visual Studio Community 2015 telepítése [adminisz
 # Házi feladat
 - Tegyünk ki egy GridSplittert a meglévő grid layout-ra, ami az első és a második oszlop közözzi méretezést végzi el.
 - Tegyünk ki egy GridSplittert, ami vizszintesen végzi a sorok méretezését.
+
+# Facebook csoport
+A csoportba [itt lehet jelentkezni](https://www.facebook.com/groups/dotnetcapak/)
