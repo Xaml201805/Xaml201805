@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01GridLayout", "01GridLayou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02StackPanel", "02StackPanel\02StackPanel.csproj", "{0D45B281-65EF-4735-A0C8-16EA170F058D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03DockPanel", "03DockPanel\03DockPanel.csproj", "{2BF1F0A1-99F1-4F4F-90CA-29C47128A961}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0D45B281-65EF-4735-A0C8-16EA170F058D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D45B281-65EF-4735-A0C8-16EA170F058D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D45B281-65EF-4735-A0C8-16EA170F058D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BF1F0A1-99F1-4F4F-90CA-29C47128A961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF1F0A1-99F1-4F4F-90CA-29C47128A961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF1F0A1-99F1-4F4F-90CA-29C47128A961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF1F0A1-99F1-4F4F-90CA-29C47128A961}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
