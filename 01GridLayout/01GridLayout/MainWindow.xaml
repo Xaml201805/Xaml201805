@@ -17,7 +17,43 @@
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="300*"/>
         </Grid.ColumnDefinitions>
-        <Button />
+        <!-- Ez egy megjegyzés, csak a forráskódban látszik,
+             a program futására nincs semmilyen befolyása -->
         
+        <!-- Mivel itt nem adtam meg a sor és oszlopindexet
+             ÉS a <Grid></Grid> között vagyok, tehát a grid tartalmazza
+             ezt a gombot. Vagyis, ez így lesz kiegészítve:
+        
+            <Button Grid.Row="0" Grid.Column="0"/>
+        
+            Fontos: 
+        
+            a C# a gyűjteményeket 0-val kezdődően indexeli, így a 0. sor
+            0. oszlop az valójában az első sor és első oszlopot jelöli.
+        -->
+        <Button />
+
+        <!-- Ez a gomb pedig a 0. indexű (vagyis első) sorba 
+             és mivel megadtuk, ezért az 1. indexű (vagyis második) 
+             oszlopba kerül-->
+        <Button Grid.Column="1"/>
+        
+        <Button Grid.Column="2"/>
+
+        <!-- Ez a gomb pedig, mivel megadtuk, 
+             az 1. indexű (vagyis a második) sorba kerül, és mivel
+             nem adtuk meg, így 0. indexű (vagyis első) 
+             oszlopba kerül-->
+        <Button Grid.Row="1"/>
+        
+        <Button Grid.Row="2"/>
+
+        <!-- itt pedig már mindkét paramétert megadjuk-->
+        <Button Grid.Row="1" Grid.Column="1"/>
+        <Button Grid.Row="1" Grid.Column="2"/>
+        <Button Grid.Row="2" Grid.Column="1"/>
+        <Button Grid.Row="2" Grid.Column="2"/>
+
+
     </Grid>
 </Window>
