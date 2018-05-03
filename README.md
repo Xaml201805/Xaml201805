@@ -35,3 +35,8 @@ Ezt letölteni [erről az oldalról](https://docs.microsoft.com/hu-hu/visualstud
 Mivel van csomagkezelőnk, a Visual Studio Community 2015 telepítése [adminisztrátori parancssorból így megy](https://chocolatey.org/packages/VisualStudio2015Community):
 
 **cinst visualstudio2015community**
+
+
+# Házi feladat
+- Tegyünk ki egy GridSplittert a meglévő grid layout-ra, ami az első és a második oszlop közözzi méretezést végzi el.
+- Tegyünk ki egy GridSplittert, ami vizszintesen végzi a sorok méretezését.
