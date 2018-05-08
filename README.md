@@ -44,3 +44,7 @@ Mivel van csomagkezelőnk, a Visual Studio Community 2015 telepítése [adminisz
 # Elérhetőségek
 - A csoportba [itt lehet jelentkezni](https://www.facebook.com/groups/dotnetcapak/)
 - email: [plesz.gabor@netacademia.hu](emailto: plesz.gabor@netacademia.hu)
+
+# Házi feladat
+- próbáljuk ki, hogy a kártyapakli nem 6 elemű, és nem ezek a kártyák vannak benne
+- a gombok eseményvezérlőiben üzenjük ki, hogy hányadik kártyalapot húztuk, esetleg azt is, hogy melyiket
