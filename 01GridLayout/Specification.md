@@ -97,6 +97,10 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 Feladatok
 - a gombokra kattintással történjen valami
 - legyen kártyáknak egy halmaza, amibõl kattintásra egyet megjelenítünk véletlenszerûen
+  - létrehozunk egy polcot, amire kártyákat tudunk tenni,
+  - a polc egyes elemeire kiteszünk kártyákat,
+  - a polc egyes elemei meg vannak számozva 0-tól a kártyák száma-1-ig, 
+  - mondunk egy véletlen számot, és az annyiadik kártyát levesszük a polcról.
 
 Programozás
 - a *.xaml a vizuális tervezõ nyelven (XAML: Extended Application Markup Language) megírt **deklaratív** kódot tartalmazza
