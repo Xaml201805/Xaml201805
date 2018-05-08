@@ -25,11 +25,10 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <fa:ImageAwesome Margin="40"
-                                 Icon="Check" />
+                                 Icon="None" />
                 <fa:ImageAwesome Margin="10"
                                  Grid.Column="1" 
                                  Icon="Microchip" />
-
             </Grid>
 
 
@@ -41,15 +40,20 @@
                 <Label Content="Átlagos Reakció idő"/>
                 <Label Content="árx"/>
             </WrapPanel>
-            <Button Content="Igen" Grid.Row="2"
+            <Button x:Name="ButtonYes" Content="Igen" Grid.Row="2"
                     Margin="5" Padding="10" 
-                    HorizontalAlignment="Left"/>
-            <Button Content="Nem" Grid.Row="2"
+                    HorizontalAlignment="Left" 
+                    Click="ButtonYes_Click" 
+                    />
+            <Button x:Name="ButtonNo" Content="Nem" Grid.Row="2"
                     Margin="5" Padding="10" 
-                    HorizontalAlignment="Center"/>
+                    HorizontalAlignment="Center" 
+                    Click="ButtonNo_Click" 
+                    />
             <Button Content="Kezdés" Grid.Row="2"
                     Margin="5" Padding="10" 
-                    HorizontalAlignment="Right"/>
+                    HorizontalAlignment="Right" 
+                    />
 
         </Grid>
         <ListBox Width="120">

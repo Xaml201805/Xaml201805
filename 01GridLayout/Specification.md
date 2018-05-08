@@ -23,8 +23,9 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 - **Elek** elindítja az alkalmazást, és néhány játékot játszik, ezáltal képet nyer az aktuális reakció idejérõl, koncentrációképességérõl.
 
 ## Játékmenet
-- Kezdéskor kapunk egy kártyát, majd a játék kezdésével a kártyánkat egy új váltja fel. 
-- A visszajelzésünkre (egyforma/nem egyforma) a játék jelzi egy zöld pipával/piros kereszttel, hogy a válaszunk helyes vagy helytelen. 
+- Kezdéskor kapunk egy kártyát, majd a játék indításával a kártyánkat egy új váltja fel. 
+- A visszajelzésünkre (egyforma/nem egyforma) 
+- a játék jelzi egy zöld pipával/piros kereszttel, hogy a válaszunk helyes vagy helytelen. 
 - A válasznak megfelelõ pontot számolja, 
 - méri az egyes reakcióidõt 
 - és az átlagos reakcióidõt is. 
@@ -91,3 +92,12 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
   - ahhoz, hogy használjuk, 
     - telepítenünk kell a csomagot
     - a névtér hivatkozást (xmlns:fa="http://schemas.fontawesome.io/icons/") az ablak definíciójához hozzá kell adni!
+
+## Kódolási jegyzet
+Feladatok
+- a gombokra kattintással történjen valami
+- legyen kártyáknak egy halmaza, amibõl kattintásra egyet megjelenítünk véletlenszerûen
+
+Programozás
+- a *.xaml a vizuális tervezõ nyelven (XAML: Extended Application Markup Language) megírt **deklaratív** kódot tartalmazza
+- a *.xaml.cs pedig az un. **Code Behind**, ami a procedurális kódot tartalmazza. Pl. az egyes eseményekre adott válaszokat.
