@@ -64,6 +64,11 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 | |          |  |                                                                                 | |
 | +----------+  +---------------------------------------------------------------------------------+ |
 +---------------------------------------------------------------------------------------------------+
-
-
 ```
+
+- A képernyõn két oszlop lesz: *top 5 lista* és a képernyõ többi része.
+- A top 5 listán szöveg lesz, így nem érdemes kívülrõl átméretezni: így a belsõ tertalomnak kell az oszlop méretét meghatározni. Ezért ez az oszlop szélesség: **Auto**
+- a maradék pedig töltse ki a rendelkezésre álló helyet.
+- A második oszlopban pedig három sor lesz, az alsó és felsõ a tartalom méretét veszi fel, a középsõ pedig kitölti a rendelkezésre álló teret.
+
+- A kártyák megmutatásához képet kell kezelnünk. Vagy mi rajtolunk, vagy keresünk az Interneten, vagy egy "okos" megoldást használunk. Rajzolni nem fogunk, egyszerûen kártyaképet nem találtunk, a harmadik megoldást választjuk.
