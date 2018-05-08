@@ -29,7 +29,11 @@ namespace XamlGame
         private void ButtonYes_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Igen gombot nyomtunk");
+            UjKartyaHuzasa();
+        }
 
+        private void UjKartyaHuzasa()
+        {
             //szigorúan típusos nyelv a C#, ezért megmondjuk, hogy a polcunkon mi
             //lehet. Ezzel a polcra csak olyan dolgot tehetek, mást nem.
             //a "polc" programozói neve: "tömb"
@@ -62,10 +66,7 @@ namespace XamlGame
         private void ButtonNo_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Nem gombot nyomtunk");
-
-
-            CardLeft.Icon = FontAwesome.WPF.FontAwesomeIcon.CreditCard;
-
+            UjKartyaHuzasa();
         }
     }
 }
