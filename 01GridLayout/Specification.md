@@ -26,7 +26,8 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 - Kezdéskor kapunk egy kártyát, 
 - majd a játék indításával a kártyánkat egy új váltja fel. A játék indítása, az Indítás gombbal megy.
 - A visszajelzésünkre (egyforma/nem egyforma) 
-- a játék jelzi egy zöld pipával/piros kereszttel, hogy a válaszunk helyes vagy helytelen. 
+- a játék jelzi egy zöld pipával/piros kereszttel, hogy a válaszunk helyes vagy helytelen.
+- a játékot billentyûzettel lehessen játszani
 - A válasznak megfelelõ pontot számolja, 
 - méri az egyes reakcióidõt 
 - és az átlagos reakcióidõt is. 
@@ -141,3 +142,13 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 
 ### Programozás
 - animációval átállítjuk a kártya Opacity értékét 100%-ról 0%-ra
+
+## Feladatok
+- Billentyûvel is lehessen a játékot játszani. Ehhez:
+  - játékot lehessen indítani billentyûvel (felfelé nyíl)
+  - igen és nem-et lehessen válaszolni billentyûvel (jobbra/balra nyíl)
+
+### Programozás
+- el kell tudnunk kapni a billentyûleütést
+- meg kell tudni mondani, hogy felfelé/jobbra/balra nyíl
+- ennek megfelelõen kell a játékot folytatni.

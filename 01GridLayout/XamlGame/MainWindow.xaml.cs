@@ -181,5 +181,10 @@ namespace XamlGame
             ButtonYes.IsEnabled = true;
             ButtonNo.IsEnabled = true;
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            Debug.WriteLine(e.Key);
+        }
     }
 }
