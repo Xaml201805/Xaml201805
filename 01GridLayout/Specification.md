@@ -152,3 +152,7 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 - el kell tudnunk kapni a billentyûleütést
 - meg kell tudni mondani, hogy felfelé/jobbra/balra nyíl
 - ennek megfelelõen kell a játékot folytatni.
+
+## Feladatok
+- az új kártya húzását is animációval jelezni
+- a használható billentyûk jelzése a gombokon
