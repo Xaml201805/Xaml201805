@@ -52,4 +52,11 @@ Mivel van csomagkezelőnk, a Visual Studio Community 2015 telepítése [adminisz
 # Házi feladat 3
 - Debuggoljátok végig a program egyes részeit, keressetek felesleges duplázódásokat.
 - A gombokat tervezzétek át úgy, hogy az ikon a szöveg fölött legyen.
-- 
+
+
+# Tanulás felnőtt fejjel
+- Figyelem
+- Létrehozás, alkotás
+- Érzelem
+- Elegendő idő
+[AGES: Attention, Generation, Emotion, Spacing](https://www.inc.com/laura-garnett/four-secrets-to-learning-anything-according-to-neuroscience.html)
