@@ -45,22 +45,62 @@
                 <Label Content="Átlagos Reakció idő"/>
                 <Label Content="árx"/>
             </WrapPanel>
-            <Button x:Name="ButtonYes" Content="Igen" Grid.Row="2"
+            <Button x:Name="ButtonYes" Grid.Row="2"
                     Margin="5" Padding="10" 
                     HorizontalAlignment="Left" 
                     Click="ButtonYes_Click" 
-                    />
-            <Button x:Name="ButtonNo" Content="Nem" Grid.Row="2"
+                    >
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:FontAwesome Icon="ArrowLeft" 
+                                        Margin="5" 
+                                        HorizontalAlignment="Left" 
+                                        VerticalAlignment="Center"/>
+                        <TextBlock Text="Igen" 
+                                   HorizontalAlignment="Right" 
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button x:Name="ButtonNo" Grid.Row="2"
                     Margin="5" Padding="10" 
                     HorizontalAlignment="Center" 
                     Click="ButtonNo_Click" 
-                    />
-            <Button x:Name="ButtonStart" Content="Indítás" 
+                    >
+                <Button.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <fa:FontAwesome Icon="ArrowRight" 
+                                        Margin="5"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        />
+                        <TextBlock Text="Nem" Grid.Column="1"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   />
+                    </Grid>
+                </Button.Content>
+            </Button>
+            <Button x:Name="ButtonStart"
                     Grid.Row="2"
                     Margin="5" Padding="10" 
                     HorizontalAlignment="Right" 
                     Click="ButtonStart_Click" 
-                    />
+                    >
+                <Button.Content>
+                    <DockPanel>
+                        <fa:FontAwesome Icon="ArrowUp" 
+                                        Margin="5"/>
+                        <TextBlock Text="Indítás" 
+                                   VerticalAlignment="Center"
+                                   />
+                    </DockPanel>
+                </Button.Content>
+            </Button>
 
         </Grid>
         <ListBox Width="120">
