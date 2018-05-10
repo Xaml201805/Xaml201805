@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FontAwesome.WPF;
 
 namespace XamlGame
 {
@@ -21,6 +22,8 @@ namespace XamlGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        private FontAwesomeIcon elozoKartya;
+
         /// <summary>
         /// Az ablak un. létrehozó függvénye (constructor)
         /// Az ablak a képernyőre kirajzolásakor ez lefut.
@@ -40,12 +43,6 @@ namespace XamlGame
 
             UjKartyaHuzasa();
 
-        }
-
-        private void ButtonYes_Click(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("Igen gombot nyomtunk");
-            UjKartyaHuzasa();
         }
 
         /// <summary>
@@ -79,8 +76,45 @@ namespace XamlGame
             //dobunk egyet 0 és 5 között
             var dobas = dobokocka.Next(0, 5);
 
+            //ez egy értékadás szabályai
+            //az egyenlőségjel két részre osztja a sort
+            //az egyenlóségjel bal oldalán szereplő változó KAPJA az értéket és tárolja
+            //az egyenlőségjel jobb oldalán lévő kifejezés ADJA az értékét
+
+            //+ feladat: olyan változót kell létrehozni, 
+            //ami itt is látszódik ebben a kódblokkban,
+            //és ami a gombok 
+            //eseményvezérlőiben is látszik, így nem lehet lokális változó
+            elozoKartya = CardRight.Icon;
+ 
             //veszem a kártyapakli dobásnak megfelelő elemét és megjelenítem.
-            CardLeft.Icon = kartyapakli[dobas];
+            CardRight.Icon = kartyapakli[dobas];
+        }
+
+        private void ButtonYes_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Igen gombot nyomtunk");
+
+            // el kell dönteni, hogy az előző kártya és az aktuális kártya egyezik-e?
+            // ha igen, akkor a válaszunk jó,
+            // ha nem, akkor a válaszunk rossz.
+            // ez a feltételvizsgálat:
+
+            // ha (az előző kártya és a mostani megegyezik)
+            // akkor a válasz jó
+            // különben rossz
+
+            if (elozoKartya==CardRight.Icon) //igaz, ha egyezik a két kártya
+            { //ha a kifejezés igaz, akkor ez a kódblokk hajtódik végre
+                Debug.WriteLine("A válasz helyes volt");
+            }
+            else
+            { //ha a kifejezés nem igaz (hamis), akkor ez a kódblokk hajtódik végre
+                Debug.WriteLine("A válasz nem volt helyes volt");
+            }
+
+
+            UjKartyaHuzasa();
         }
 
         private void ButtonNo_Click(object sender, RoutedEventArgs e)

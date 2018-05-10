@@ -107,14 +107,24 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 - a *.xaml a vizuális tervezõ nyelven (XAML: Extended Application Markup Language) megírt **deklaratív** kódot tartalmazza
 - a *.xaml.cs pedig az un. **Code Behind**, ami a procedurális kódot tartalmazza. Pl. az egyes eseményekre adott válaszokat.
 
-### Feladatok
+## Feladatok
 - Induláskor csak az Indítás gombra lehessen kattintani.
 - Indulás után az Indítás gombra ne lehessen kattintani, csak az Igen/Nem gombokra.
 
-## Programozás
+### Programozás
 - Amikor elindul az alkalmazás, 
   - le kell tiltani az Igen/Nem gombot, 
   - és engedélyezni kell az Indítást.
 - Amikor az Indítást megnyomtuk, 
   - le kell tiltani az Indítást, 
   - és engedélyezni kell az Igen/Nem gombot.
+
+
+## Feladatok
+- értékelni kell, hogy jó gombot nyomtunk-e meg, vagyis tudni kell, hogy az elõzõ két kártya egyforma-e vagy sem.
+
+### Programozás
+- el kell tárolni az elõzõ kártyának az értékét
+- ehhez nem lokális változót, hanem un. osztályszintû változó (mezõt/field) használtunk
+- el kell tudni dönteni, hogy az elõzõ kártya és a mostani egyezik-e (egyezõség vizsgálat)
+- ha egyezik, mást csinálni, mintha nem egyezik, ezt hívják feltételvizsgálatnak

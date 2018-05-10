@@ -25,11 +25,11 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 
-                <fa:ImageAwesome x:Name="CardRight"
+                <fa:ImageAwesome x:Name="CardLeft"
                                  Margin="40"
                                  Icon="None" />
                 
-                <fa:ImageAwesome x:Name="CardLeft"
+                <fa:ImageAwesome x:Name="CardRight"
                                  Margin="10"
                                  Grid.Column="1" 
                                  Icon="None" />
