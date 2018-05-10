@@ -95,27 +95,14 @@ namespace XamlGame
         private void ButtonYes_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Igen gombot nyomtunk");
+            YesAnswer();
+        }
 
-            // el kell dönteni, hogy az előző kártya és az aktuális kártya egyezik-e?
-            // ha igen, akkor a válaszunk jó,
-            // ha nem, akkor a válaszunk rossz.
-            // ez a feltételvizsgálat:
+        private void ButtonNo_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Nem gombot nyomtunk");
 
-            // ha (az előző kártya és a mostani megegyezik)
-            // akkor a válasz jó
-            // különben rossz
-
-            if (elozoKartya==CardRight.Icon) //igaz, ha egyezik a két kártya
-            { //ha a kifejezés igaz, akkor ez a kódblokk hajtódik végre
-                JoValasz();
-            }
-            else
-            { //ha a kifejezés nem igaz (hamis), akkor ez a kódblokk hajtódik végre
-                RosszValasz();
-            }
-
-
-            UjKartyaHuzasa();
+            NoAnswer();
         }
 
         private void RosszValasz()
@@ -126,6 +113,15 @@ namespace XamlGame
 
             VisszajelzesEltuntetese();
 
+        }
+
+        private void JoValasz()
+        {
+            Debug.WriteLine("A válasz helyes volt");
+            CardLeft.Icon = FontAwesomeIcon.Check;
+            CardLeft.Foreground = Brushes.Green;
+
+            VisszajelzesEltuntetese();
         }
 
         private void VisszajelzesEltuntetese()
@@ -145,18 +141,31 @@ namespace XamlGame
             CardLeft.BeginAnimation(OpacityProperty, animation);
         }
 
-        private void JoValasz()
+        private void YesAnswer()
         {
-            Debug.WriteLine("A válasz helyes volt");
-            CardLeft.Icon = FontAwesomeIcon.Check;
-            CardLeft.Foreground = Brushes.Green;
-            VisszajelzesEltuntetese();
+            // el kell dönteni, hogy az előző kártya és az aktuális kártya egyezik-e?
+            // ha igen, akkor a válaszunk jó,
+            // ha nem, akkor a válaszunk rossz.
+            // ez a feltételvizsgálat:
+
+            // ha (az előző kártya és a mostani megegyezik)
+            // akkor a válasz jó
+            // különben rossz
+
+            if (elozoKartya == CardRight.Icon) //igaz, ha egyezik a két kártya
+            { //ha a kifejezés igaz, akkor ez a kódblokk hajtódik végre
+                JoValasz();
+            }
+            else
+            { //ha a kifejezés nem igaz (hamis), akkor ez a kódblokk hajtódik végre
+                RosszValasz();
+            }
+
+            UjKartyaHuzasa();
         }
 
-        private void ButtonNo_Click(object sender, RoutedEventArgs e)
+        private void NoAnswer()
         {
-            Debug.WriteLine("Nem gombot nyomtunk");
-
             if (elozoKartya != CardRight.Icon) //igaz, ha nem egyezik meg a két kártya
             { //ha a kifejezés igaz, akkor ez a kódblokk hajtódik végre
                 JoValasz();
@@ -169,9 +178,8 @@ namespace XamlGame
             UjKartyaHuzasa();
         }
 
-        private void ButtonStart_Click(object sender, RoutedEventArgs e)
+        private void StartGame()
         {
-            Debug.WriteLine("Start gombot nyomtunk");
             UjKartyaHuzasa();
 
             //le kell tiltani az Indítást,
@@ -182,9 +190,31 @@ namespace XamlGame
             ButtonNo.IsEnabled = true;
         }
 
+        private void ButtonStart_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Start gombot nyomtunk");
+            StartGame();
+        }
+
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             Debug.WriteLine(e.Key);
+
+            if (e.Key==Key.Up)
+            { // felfelé nyíl: indítás
+                StartGame();
+            }
+
+            if (e.Key==Key.Right)
+            { // jobbranyíl: nem gomb
+                NoAnswer();
+            }
+
+            if (e.Key==Key.Left)
+            { //balranyíl: igen gomb
+                YesAnswer();
+            }
+
         }
     }
 }
