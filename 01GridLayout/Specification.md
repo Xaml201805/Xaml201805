@@ -135,3 +135,9 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 ### Programozás
 - baloldali kártyára ikon (pipa/kereszt)
 - kártya színének meghatározása (piros/zöld)
+
+## Feladatok
+- a válasz helyességének ikonja tûnjön el egy idõ után
+
+### Programozás
+- animációval átállítjuk a kártya Opacity értékét 100%-ról 0%-ra

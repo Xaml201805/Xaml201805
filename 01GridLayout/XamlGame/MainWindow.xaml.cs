@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FontAwesome.WPF;
+using System.Windows.Media.Animation;
 
 namespace XamlGame
 {
@@ -122,6 +123,26 @@ namespace XamlGame
             Debug.WriteLine("A válasz nem volt helyes volt");
             CardLeft.Icon = FontAwesomeIcon.Times;
             CardLeft.Foreground = Brushes.Red;
+
+            VisszajelzesEltuntetese();
+
+        }
+
+        private void VisszajelzesEltuntetese()
+        {
+            //Animáció: egy érték változtatása az idő függvényében.
+            //példa: egy szám folyamatosan változik 0-tól 1-ig
+            //az egyik tizedes tört típus neve: double
+
+            //A feladat: a baloldali kártya Opacity tulajdonságának értékét 
+            //100%-ról lecsökkenteni 0%-ra rövid idő alatt (legyen 1 másodperc)
+
+            //a 100%-ot 1-el adjuk meg
+            //a   0%-ot 0-val,
+            //az időtartam neve C# nyelven: TimeSpan
+
+            var animation = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(1000));
+            CardLeft.BeginAnimation(OpacityProperty, animation);
         }
 
         private void JoValasz()
@@ -129,6 +150,7 @@ namespace XamlGame
             Debug.WriteLine("A válasz helyes volt");
             CardLeft.Icon = FontAwesomeIcon.Check;
             CardLeft.Foreground = Brushes.Green;
+            VisszajelzesEltuntetese();
         }
 
         private void ButtonNo_Click(object sender, RoutedEventArgs e)
