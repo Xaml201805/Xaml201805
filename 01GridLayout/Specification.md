@@ -23,7 +23,8 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 - **Elek** elindítja az alkalmazást, és néhány játékot játszik, ezáltal képet nyer az aktuális reakció idejérõl, koncentrációképességérõl.
 
 ## Játékmenet
-- Kezdéskor kapunk egy kártyát, majd a játék indításával a kártyánkat egy új váltja fel. 
+- Kezdéskor kapunk egy kártyát, 
+- majd a játék indításával a kártyánkat egy új váltja fel. A játék indítása, az Indítás gombbal megy.
 - A visszajelzésünkre (egyforma/nem egyforma) 
 - a játék jelzi egy zöld pipával/piros kereszttel, hogy a válaszunk helyes vagy helytelen. 
 - A válasznak megfelelõ pontot számolja, 
@@ -72,6 +73,7 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 - a maradék pedig töltse ki a rendelkezésre álló helyet.
 - A második oszlopban pedig három sor lesz, az alsó és felsõ a tartalom méretét veszi fel, a középsõ pedig kitölti a rendelkezésre álló teret.
 
+## Kódolási jegyzet
 - A kártyák megmutatásához képet kell kezelnünk. Vagy mi rajtolunk, vagy keresünk az Interneten, vagy egy "okos" megoldást használunk. Rajzolni nem fogunk, egyszerûen kártyaképet nem találtunk, a harmadik megoldást választjuk.
   - amire szükségünk van, az a **vektorgrafika**, így el tudjuk kerülni a képméretezés miatti raszteres képeket.
   - érdemes tudni, hogy például a letölthetõ unicode fontok vektorgrafikát tartalmaznak.
@@ -93,8 +95,7 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
     - telepítenünk kell a csomagot
     - a névtér hivatkozást (xmlns:fa="http://schemas.fontawesome.io/icons/") az ablak definíciójához hozzá kell adni!
 
-## Kódolási jegyzet
-Feladatok
+### Feladatok
 - a gombokra kattintással történjen valami
 - legyen kártyáknak egy halmaza, amibõl kattintásra egyet megjelenítünk véletlenszerûen
   - létrehozunk egy polcot, amire kártyákat tudunk tenni,
@@ -102,6 +103,18 @@ Feladatok
   - a polc egyes elemei meg vannak számozva 0-tól a kártyák száma-1-ig, 
   - mondunk egy véletlen számot, és az annyiadik kártyát levesszük a polcról.
 
-Programozás
+### Programozás
 - a *.xaml a vizuális tervezõ nyelven (XAML: Extended Application Markup Language) megírt **deklaratív** kódot tartalmazza
 - a *.xaml.cs pedig az un. **Code Behind**, ami a procedurális kódot tartalmazza. Pl. az egyes eseményekre adott válaszokat.
+
+### Feladatok
+- Induláskor csak az Indítás gombra lehessen kattintani.
+- Indulás után az Indítás gombra ne lehessen kattintani, csak az Igen/Nem gombokra.
+
+## Programozás
+- Amikor elindul az alkalmazás, 
+  - le kell tiltani az Igen/Nem gombot, 
+  - és engedélyezni kell az Indítást.
+- Amikor az Indítást megnyomtuk, 
+  - le kell tiltani az Indítást, 
+  - és engedélyezni kell az Igen/Nem gombot.

@@ -37,7 +37,7 @@ Mivel van csomagkezelőnk, a Visual Studio Community 2015 telepítése [adminisz
 **cinst visualstudio2015community**
 
 
-# Házi feladat
+# Házi feladat 1
 - Tegyünk ki egy GridSplittert a meglévő grid layout-ra, ami az első és a második oszlop közözzi méretezést végzi el.
 - Tegyünk ki egy GridSplittert, ami vizszintesen végzi a sorok méretezését.
 
@@ -45,6 +45,6 @@ Mivel van csomagkezelőnk, a Visual Studio Community 2015 telepítése [adminisz
 - A csoportba [itt lehet jelentkezni](https://www.facebook.com/groups/dotnetcapak/)
 - email: [plesz.gabor@netacademia.hu](emailto: plesz.gabor@netacademia.hu)
 
-# Házi feladat
+# Házi feladat 2
 - próbáljuk ki, hogy a kártyapakli nem 6 elemű, és nem ezek a kártyák vannak benne
 - a gombok eseményvezérlőiben üzenjük ki, hogy hányadik kártyalapot húztuk, esetleg azt is, hogy melyiket

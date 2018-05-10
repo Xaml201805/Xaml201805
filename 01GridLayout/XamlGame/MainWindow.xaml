@@ -54,9 +54,11 @@
                     HorizontalAlignment="Center" 
                     Click="ButtonNo_Click" 
                     />
-            <Button Content="Kezdés" Grid.Row="2"
+            <Button x:Name="ButtonStart" Content="Indítás" 
+                    Grid.Row="2"
                     Margin="5" Padding="10" 
                     HorizontalAlignment="Right" 
+                    Click="ButtonStart_Click" 
                     />
 
         </Grid>

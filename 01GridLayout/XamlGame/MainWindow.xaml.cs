@@ -21,9 +21,25 @@ namespace XamlGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Az ablak un. létrehozó függvénye (constructor)
+        /// Az ablak a képernyőre kirajzolásakor ez lefut.
+        /// </summary>
         public MainWindow()
         {
+            //Ez a sor elintéz adminisztrációt, 
+            //a saját kódunkat ez után írjuk
             InitializeComponent();
+
+            //engedélyezzük az indítás gombot
+            ButtonStart.IsEnabled = true;
+
+            //letiltjuk az Igen/Nem gombokat
+            ButtonYes.IsEnabled = false;
+            ButtonNo.IsEnabled = false;
+
+            UjKartyaHuzasa();
+
         }
 
         private void ButtonYes_Click(object sender, RoutedEventArgs e)
@@ -32,6 +48,10 @@ namespace XamlGame
             UjKartyaHuzasa();
         }
 
+        /// <summary>
+        /// Ebbe a függvénybe szerveztük ki a kártyahúzással kapcsolatos feladatokat.
+        /// Előnye, hogy több helyről is meghívható.
+        /// </summary>
         private void UjKartyaHuzasa()
         {
             //szigorúan típusos nyelv a C#, ezért megmondjuk, hogy a polcunkon mi
@@ -67,6 +87,19 @@ namespace XamlGame
         {
             Debug.WriteLine("Nem gombot nyomtunk");
             UjKartyaHuzasa();
+        }
+
+        private void ButtonStart_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Start gombot nyomtunk");
+            UjKartyaHuzasa();
+
+            //le kell tiltani az Indítást,
+            ButtonStart.IsEnabled = false;
+
+            //és engedélyezni kell az Igen/ Nem gombot.
+            ButtonYes.IsEnabled = true;
+            ButtonNo.IsEnabled = true;
         }
     }
 }
