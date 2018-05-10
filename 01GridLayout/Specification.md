@@ -131,3 +131,7 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 
 ## Feladatok
 - ikonnal jelezni, hogy a válasz helyes-e?
+
+### Programozás
+- baloldali kártyára ikon (pipa/kereszt)
+- kártya színének meghatározása (piros/zöld)
