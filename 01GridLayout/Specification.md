@@ -128,3 +128,6 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 - ehhez nem lokális változót, hanem un. osztályszintû változó (mezõt/field) használtunk
 - el kell tudni dönteni, hogy az elõzõ kártya és a mostani egyezik-e (egyezõség vizsgálat)
 - ha egyezik, mást csinálni, mintha nem egyezik, ezt hívják feltételvizsgálatnak
+
+## Feladatok
+- ikonnal jelezni, hogy a válasz helyes-e?

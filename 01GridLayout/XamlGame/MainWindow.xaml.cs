@@ -59,16 +59,16 @@ namespace XamlGame
             //a variable neve: változó
             //egy olyan "változót" hoztam létre, ami 6 db ilyen ikon nevet tartalmazhat
             //változó: vagyis változtatható az értéke, ellentéte a konstans, amit egyszer lehet megadni, utána nem változhat.
-            var kartyapakli = new FontAwesome.WPF.FontAwesomeIcon[6];
+            var kartyapakli = new FontAwesomeIcon[6];
 
             //0-tól 5-ig vannak a helyek ebben a tömbben
             //feltöltjük ikonokkal
-            kartyapakli[0] = FontAwesome.WPF.FontAwesomeIcon.Fax;
-            kartyapakli[1] = FontAwesome.WPF.FontAwesomeIcon.Female;
-            kartyapakli[2] = FontAwesome.WPF.FontAwesomeIcon.Download;
-            kartyapakli[3] = FontAwesome.WPF.FontAwesomeIcon.Edge;
-            kartyapakli[4] = FontAwesome.WPF.FontAwesomeIcon.Hashtag;
-            kartyapakli[5] = FontAwesome.WPF.FontAwesomeIcon.Mars;
+            kartyapakli[0] = FontAwesomeIcon.Fax;
+            kartyapakli[1] = FontAwesomeIcon.Female;
+            kartyapakli[2] = FontAwesomeIcon.Download;
+            kartyapakli[3] = FontAwesomeIcon.Edge;
+            kartyapakli[4] = FontAwesomeIcon.Hashtag;
+            kartyapakli[5] = FontAwesomeIcon.Mars;
 
             //létrehozunk egy elektronikus dobókockát
             var dobokocka = new Random();
@@ -106,20 +106,44 @@ namespace XamlGame
 
             if (elozoKartya==CardRight.Icon) //igaz, ha egyezik a két kártya
             { //ha a kifejezés igaz, akkor ez a kódblokk hajtódik végre
-                Debug.WriteLine("A válasz helyes volt");
+                JoValasz();
             }
             else
             { //ha a kifejezés nem igaz (hamis), akkor ez a kódblokk hajtódik végre
-                Debug.WriteLine("A válasz nem volt helyes volt");
+                RosszValasz();
             }
 
 
             UjKartyaHuzasa();
         }
 
+        private void RosszValasz()
+        {
+            Debug.WriteLine("A válasz nem volt helyes volt");
+            CardLeft.Icon = FontAwesomeIcon.Times;
+            CardLeft.Foreground = Brushes.Red;
+        }
+
+        private void JoValasz()
+        {
+            Debug.WriteLine("A válasz helyes volt");
+            CardLeft.Icon = FontAwesomeIcon.Check;
+            CardLeft.Foreground = Brushes.Green;
+        }
+
         private void ButtonNo_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Nem gombot nyomtunk");
+
+            if (elozoKartya != CardRight.Icon) //igaz, ha nem egyezik meg a két kártya
+            { //ha a kifejezés igaz, akkor ez a kódblokk hajtódik végre
+                JoValasz();
+            }
+            else
+            { //ha a kifejezés nem igaz (hamis), akkor ez a kódblokk hajtódik végre
+                RosszValasz();
+            }
+
             UjKartyaHuzasa();
         }
 
