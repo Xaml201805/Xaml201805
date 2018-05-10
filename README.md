@@ -48,3 +48,8 @@ Mivel van csomagkezelőnk, a Visual Studio Community 2015 telepítése [adminisz
 # Házi feladat 2
 - próbáljuk ki, hogy a kártyapakli nem 6 elemű, és nem ezek a kártyák vannak benne
 - a gombok eseményvezérlőiben üzenjük ki, hogy hányadik kártyalapot húztuk, esetleg azt is, hogy melyiket
+
+# Házi feladat 3
+- Debuggoljátok végig a program egyes részeit, keressetek felesleges duplázódásokat.
+- A gombokat tervezzétek át úgy, hogy az ikon a szöveg fölött legyen.
+- 

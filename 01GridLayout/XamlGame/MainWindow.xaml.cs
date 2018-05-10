@@ -110,7 +110,6 @@ namespace XamlGame
         private void ButtonNo_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Nem gombot nyomtunk");
-
             NoAnswer();
         }
 

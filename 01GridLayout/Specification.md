@@ -156,3 +156,4 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 ## Feladatok
 - az új kártya húzását is animációval jelezni
 - a használható billentyûk jelzése a gombokon
+- játék az animációval: mit lehet csinálni a gombokkal
