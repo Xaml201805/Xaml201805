@@ -209,12 +209,57 @@ namespace XamlGame
             //eltelt idő tárolása a listára
             listReactionTimes.Add(stopwatch.ElapsedMilliseconds);
 
+            //átlagszámítás algoritmusa: számok átlaga: a számok összege osztva a számok darabszámával.
+            //1. össze kell adni a számokat
+            //2. tudni kell a darabszámukat
+            //3. ezt a két számot egymással el kell osztani.
+
+            //átlagszámítás 1. (még mindig a C# erejéve)
+            var average1 = listReactionTimes.Sum() / listReactionTimes.Count;
+
+            //átlagszámítás 2.
+            long sum2 = 0;  //ebbe gyűjtöm a reakcióidők összegét, fontos, hogy "long" legyen, mert a ezredmásodpercek azok.
+
+            //végig gyalogolva a listán, minden elemen ugyanazt tesszük, hozzáadjuk az összeghez
+            foreach (var reactionTime in listReactionTimes)
+            {
+                sum2 = sum2 + reactionTime;
+            }
+
+            var average2 = sum2 / listReactionTimes.Count;
+
+            //átlagszámítás 3.
+            long sum3 = 0;
+
+            //végig megyünk a listán "kézzel"
+            for (int i = 0; i < listReactionTimes.Count; i++)
+            { //az i értéke 0-tól listReactionTimes.Count-1-ig megy egyesével, majd végrehajtja a kódblokkot
+                sum3 = sum3 + listReactionTimes[i];
+            }
+
+            var average3 = sum3 / listReactionTimes.Count;
+
+            //átlagszámítás 4.
+
+            long sum4 = 0;
+            var ii = 0;
+
+            //végiglépkedünk a listán mezítlábas módszerrel
+            while (ii<listReactionTimes.Count)
+            {
+                sum4 = sum4 + listReactionTimes[ii];
+                ii = ii + 1;
+            }
+
+            var average4 = sum4 / ii;
+            
             //kiszámoljuk az átlagot? Majd a dotnet kiszámolja!
 
             //a lista sokoldalúságát kihasználva a listáról visszaolvassuk az utolsó reakcióidőt és az átlagot.
             //annyi feladat van ezzel, hogy az átlag törtszámban adja az eredményt.
             //ezért a végén egésszé alakítjuk
-            LabelReactionTime.Content = $"{listReactionTimes.Last()}/{(long)listReactionTimes.Average()}";
+
+            LabelReactionTime.Content = $"{listReactionTimes.Last()}/{(long)listReactionTimes.Average()}/{average1}/{average2}/{average3}/{average4}";
 
             LabelScore.Content = score;
         }

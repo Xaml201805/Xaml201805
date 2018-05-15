@@ -44,7 +44,7 @@
                 <Label x:Name="LabelScore" Content="0" Width="50"/>
                 <Label Content="Reakció idő"/>
                 <Label x:Name="LabelReactionTime" Content="" 
-                       Width="100"/>
+                       />
             </WrapPanel>
             <Button x:Name="ButtonYes" Grid.Row="2"
                     Margin="5" Padding="10" 
