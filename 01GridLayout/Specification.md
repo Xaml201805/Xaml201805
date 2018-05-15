@@ -161,6 +161,8 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 ## Feladatok
 - a pontszám számítása és megmutatása
   - szükséges ismerni a válasz helyességét
+    - jó válasz esetén + 100 pont
+    - rossz válasz esetán -100 pont
   - szükséges ismerni a válaszhoz szükséges idõt
   - esetleg érdemes ismerni az átlagos reakcióidõt is.
 

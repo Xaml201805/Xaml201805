@@ -121,7 +121,7 @@ namespace XamlGame
             CardLeft.Icon = FontAwesomeIcon.Times;
             CardLeft.Foreground = Brushes.Red;
 
-            Scoring();
+            Scoring(false);
 
             VisszajelzesEltuntetese();
 
@@ -133,14 +133,32 @@ namespace XamlGame
             CardLeft.Icon = FontAwesomeIcon.Check;
             CardLeft.Foreground = Brushes.Green;
 
-            Scoring();
+            Scoring(true);
 
             VisszajelzesEltuntetese();
         }
 
-        private void Scoring()
+        /// <summary>
+        /// Pont számítása és megjelenítése
+        /// </summary>
+        /// <param name="isGoodAnswer">
+        ///     jelzi, hogy jó válasz után hívtuk-e a pontszámítást. 
+        ///     A névben az is (has, must) előtagok a logikai változóra utalnak. 
+        ///     A paraméter névkonvenciója szerint pascal case tagolású,
+        ///     vagyis az első szó kisbetűvel kezdődik, a többi szó nagybetűvel.
+        ///     ha =true, akkor jó választ jelöl a paraméter, ha =false akkor rossz választ.
+        /// </param>
+        private void Scoring(bool isGoodAnswer)
         {
-            Score = Score + 1;
+            if (isGoodAnswer)
+            { //ha jó válasz után hívtuk
+                Score = Score + 100;
+            }
+            else
+            { //ha rossz válasz után hívtuk
+                Score = Score - 100;
+            }
+
             LabelScore.Content = Score;
         }
 
