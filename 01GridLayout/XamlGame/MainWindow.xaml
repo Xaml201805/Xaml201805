@@ -103,6 +103,25 @@
                 </Button.Content>
             </Button>
 
+            <Button x:Name="ButtonRestart"
+                    Grid.Row="2"
+                    Margin="5" Padding="10" 
+                    HorizontalAlignment="Right" 
+                    Click="ButtonRestart_Click"
+                    Visibility="Hidden" 
+                    >
+                <Button.Content>
+                    <DockPanel>
+                        <fa:FontAwesome Icon="Asterisk" 
+                                        Margin="5"/>
+                        <TextBlock Text="Új játék" 
+                                   VerticalAlignment="Center"
+                                   />
+                    </DockPanel>
+                </Button.Content>
+            </Button>
+
+
         </Grid>
         <ListBox Width="120">
             

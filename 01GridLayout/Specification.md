@@ -32,9 +32,9 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
   - [X] méri az egyes reakcióidõt 
   - [X] és az átlagos reakcióidõt is. 
 - [ ] A játék meghatározott ideig tart, amit a kezdéstõl egy visszaszámláló óra jelez. 
-- [ ] A játék végén látjuk a pontszámunkat, 
+- [X] A játék végén látjuk a pontszámunkat, 
 - [ ] és a top 5 pontszámot. 
-- [ ] Ha akarjuk újrakezdhetjük a játékot, vagy kiléphetünk.
+- [X] Ha akarjuk újrakezdhetjük a játékot, vagy kiléphetünk.
 
 ## A játék fõképernyõje
 

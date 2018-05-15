@@ -43,14 +43,7 @@ namespace XamlGame
             //a saját kódunkat ez után írjuk
             InitializeComponent();
 
-            //engedélyezzük az indítás gombot
-            ButtonStart.IsEnabled = true;
-
-            //letiltjuk az Igen/Nem gombokat
-            ButtonYes.IsEnabled = false;
-            ButtonNo.IsEnabled = false;
-            score = 0;
-            playTime = TimeSpan.FromSeconds(0);
+            //csak az alkalmazás indulásakor kell
 
             //ingaóra létrehozása:
             //meghatározott időközönként jelez:
@@ -60,9 +53,9 @@ namespace XamlGame
             //a változója osztályszintű, mivel máshonnan is hozzá kell férnem
             pendulumClock = new DispatcherTimer(
                 TimeSpan.FromSeconds(1)        //az eseményt 1 másodpercenként kérem
-                ,DispatcherPriority.Normal     //semmi különös, semmi nagyon fontos, normális ügymenet
-                ,ClockShock                    //ez az az eseményvezérlő, amit minden másodpercben az ingaóránk meghív
-                ,Application.Current.Dispatcher 
+                , DispatcherPriority.Normal     //semmi különös, semmi nagyon fontos, normális ügymenet
+                , ClockShock                    //ez az az eseményvezérlő, amit minden másodpercben az ingaóránk meghív
+                , Application.Current.Dispatcher
             );
 
             //mivel ez az óra azonnal elindul, állítsuk is meg: 
@@ -71,9 +64,6 @@ namespace XamlGame
 
             //stopperóra létrehozása az egyes reakciók mérésére.
             stopwatch = new Stopwatch();
-
-            //az összes reakcióidőt tartalmazó lista létrehozása
-            listReactionTimes = new List<long>();
 
             //szigorúan típusos nyelv a C#, ezért megmondjuk, hogy a polcunkon mi
             //lehet. Ezzel a polcra csak olyan dolgot tehetek, mást nem.
@@ -97,10 +87,62 @@ namespace XamlGame
             //létrehozunk egy elektronikus dobókockát
             dobokocka = new Random();
 
-            UjKartyaHuzasa();
+            //minden játék idításakor kell
+            StartingState();
 
         }
 
+
+        /// <summary>
+        /// A játék kezdőállapotát állítja elő
+        /// </summary>
+        private void StartingState()
+        {
+            //megmutatjuk a start gombot
+            ButtonStart.Visibility = Visibility.Visible;
+
+            //eltüntetjük a restart gombot
+            ButtonRestart.Visibility = Visibility.Hidden;
+
+            //engedélyezzük az indítás gombot
+            ButtonStart.IsEnabled = true;
+
+            //letiltjuk az Igen/Nem gombokat
+            ButtonYes.IsEnabled = false;
+            ButtonNo.IsEnabled = false;
+
+            score = 0;
+            ShowScore();
+
+            playTime = TimeSpan.FromSeconds(0);
+            ShowPlayTime();
+
+            //az összes reakcióidőt tartalmazó lista létrehozása
+            listReactionTimes = new List<long>();
+            ShowReactionTimes(0,0,0,0,0,0);
+
+            UjKartyaHuzasa();
+        }
+
+
+        /// <summary>
+        /// A játék végállapotának kezelése
+        /// </summary>
+        private void FinalState()
+        {
+            pendulumClock.Stop();
+
+            //letiltjuk az Igen/Nem gombokat
+            ButtonYes.IsEnabled = false;
+            ButtonNo.IsEnabled = false;
+
+            //eltüntetjük a start gombot
+            ButtonStart.Visibility = Visibility.Hidden;
+
+            //megmutatjuk a restart gombot
+            ButtonRestart.Visibility = Visibility.Visible;
+
+        }
 
         /// <summary>
         /// Itt tudjuk a játékidőt számítani, ezt a függvényt hívja az ingaóránk másodpercenként egyszer
@@ -110,6 +152,17 @@ namespace XamlGame
         private void ClockShock(object sender, EventArgs e)
         {
             playTime = playTime + TimeSpan.FromSeconds(1);
+
+            if (playTime > TimeSpan.FromSeconds(9))
+            { // vége a játéknak
+                FinalState();
+            }
+
+            ShowPlayTime();
+        }
+
+        private void ShowPlayTime()
+        {
             LabelPlayTime.Content = $"{playTime.Minutes:00}:{playTime.Seconds:00}";
         }
 
@@ -238,31 +291,41 @@ namespace XamlGame
             var ii = 0;
 
             //végiglépkedünk a listán mezítlábas módszerrel
-            while (ii<listReactionTimes.Count)
+            while (ii < listReactionTimes.Count)
             {
                 sum4 = sum4 + listReactionTimes[ii];
                 ii = ii + 1;
             }
 
             var average4 = sum4 / ii;
-            
+
             //kiszámoljuk az átlagot? Majd a dotnet kiszámolja!
 
             //a lista sokoldalúságát kihasználva a listáról visszaolvassuk az utolsó reakcióidőt és az átlagot.
             //annyi feladat van ezzel, hogy az átlag törtszámban adja az eredményt.
             //ezért a végén egésszé alakítjuk
 
-            LabelReactionTime.Content = $"{listReactionTimes.Last()}/{(long)listReactionTimes.Average()}/{average1}/{average2}/{average3}/{average4}";
+            ShowReactionTimes(listReactionTimes.Last(), (long)listReactionTimes.Average(), average1, average2, average3, average4);
 
             if (isGoodAnswer)
             { //ha jó válasz után hívtuk
-                score = score + 100000/listReactionTimes.Last();  //minél gyorsabb valaki, annál jobban jutalmazzuk
+                score = score + 100000 / listReactionTimes.Last();  //minél gyorsabb valaki, annál jobban jutalmazzuk
             }
             else
             { //ha rossz válasz után hívtuk
-                score = score - 100*(listReactionTimes.Last()/1000); //minél lassabb valaki, annál jobban büntessük
+                score = score - 100 * (listReactionTimes.Last() / 1000); //minél lassabb valaki, annál jobban büntessük
             }
 
+            ShowScore();
+        }
+
+        private void ShowReactionTimes(long lastReactionTime, long average0, long average1, long average2, long average3, long average4)
+        {
+            LabelReactionTime.Content = $"{lastReactionTime}/{average0}/{average1}/{average2}/{average3}/{average4}";
+        }
+
+        private void ShowScore()
+        {
             LabelScore.Content = score;
         }
 
@@ -339,6 +402,12 @@ namespace XamlGame
         {
             Debug.WriteLine("Start gombot nyomtunk");
             StartGame();
+        }
+
+        private void ButtonRestart_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Restart gombot nyomtunk");
+            StartingState();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
