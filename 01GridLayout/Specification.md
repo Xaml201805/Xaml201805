@@ -164,6 +164,11 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
     - jó válasz esetén + 100 pont
     - rossz válasz esetán -100 pont
   - szükséges ismerni a válaszhoz szükséges idõt
+    - Ehhez idõmérõ idõmérõ infrastruktúra, valamilyen ismétlõdõ esemény,
+      amire feliratkozva már tudjuk az idõt számolni.
   - esetleg érdemes ismerni az átlagos reakcióidõt is.
+- az eltelt/visszalévõ játékidõ számítása
+  - Ehhez idõmérõ idõmérõ infrastruktúra, valamilyen ismétlõdõ esemény,
+    amire feliratkozva már tudjuk az idõt számolni.
 
 

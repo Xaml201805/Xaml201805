@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FontAwesome.WPF;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace XamlGame
 {
@@ -24,7 +25,9 @@ namespace XamlGame
     public partial class MainWindow : Window
     {
         private FontAwesomeIcon elozoKartya;
-        private int Score;
+        private int score;
+        private DispatcherTimer pendulumClock;
+        private TimeSpan playTime;
 
         /// <summary>
         /// Az ablak un. létrehozó függvénye (constructor)
@@ -42,10 +45,40 @@ namespace XamlGame
             //letiltjuk az Igen/Nem gombokat
             ButtonYes.IsEnabled = false;
             ButtonNo.IsEnabled = false;
-            Score = 0;
+            score = 0;
+            playTime = TimeSpan.FromSeconds(0);
+
+            //ingaóra létrehozása:
+            //meghatározott időközönként jelez:
+            //lesz egy esemény, ami ilyenkor megtörténik, és 
+            //erre az eseményre fel tudunk iratkozni.
+
+            //a változója osztályszintű, mivel máshonnan is hozzá kell férnem
+            pendulumClock = new DispatcherTimer(
+                TimeSpan.FromSeconds(1)        //az eseményt 1 másodpercenként kérem
+                ,DispatcherPriority.Normal     //semmi különös, semmi nagyon fontos, normális ügymenet
+                ,ClockShock                    //ez az az eseményvezérlő, amit minden másodpercben az ingaóránk meghív
+                ,Application.Current.Dispatcher 
+            );
+
+            //mivel ez az óra azonnal elindul, állítsuk is meg: 
+            //majd a Start gombra kell elindítani
+            pendulumClock.Stop();
 
             UjKartyaHuzasa();
 
+        }
+
+
+        /// <summary>
+        /// Itt tudjuk a játékidőt számítani, ezt a függvényt hívja az ingaóránk másodpercenként egyszer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClockShock(object sender, EventArgs e)
+        {
+            playTime = playTime + TimeSpan.FromSeconds(1);
+            LabelPlayTime.Content = $"{playTime.Minutes:00}:{playTime.Seconds:00}";
         }
 
         /// <summary>
@@ -152,14 +185,14 @@ namespace XamlGame
         {
             if (isGoodAnswer)
             { //ha jó válasz után hívtuk
-                Score = Score + 100;
+                score = score + 100;
             }
             else
             { //ha rossz válasz után hívtuk
-                Score = Score - 100;
+                score = score - 100;
             }
 
-            LabelScore.Content = Score;
+            LabelScore.Content = score;
         }
 
         private void VisszajelzesEltuntetese()
@@ -226,6 +259,9 @@ namespace XamlGame
             //és engedélyezni kell az Igen/ Nem gombot.
             ButtonYes.IsEnabled = true;
             ButtonNo.IsEnabled = true;
+
+            //időzítő elindítása
+            pendulumClock.Start();
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
