@@ -30,6 +30,8 @@ namespace XamlGame
         private TimeSpan playTime;
         private Stopwatch stopwatch;
         private List<long> listReactionTimes;
+        private FontAwesomeIcon[] kartyapakli;
+        private Random dobokocka;
 
         /// <summary>
         /// Az ablak un. létrehozó függvénye (constructor)
@@ -73,6 +75,27 @@ namespace XamlGame
             //az összes reakcióidőt tartalmazó lista létrehozása
             listReactionTimes = new List<long>();
 
+            //szigorúan típusos nyelv a C#, ezért megmondjuk, hogy a polcunkon mi
+            //lehet. Ezzel a polcra csak olyan dolgot tehetek, mást nem.
+            //a "polc" programozói neve: "tömb"
+
+            //var a variable rövidítése
+            //a variable neve: változó
+            //egy olyan "változót" hoztam létre, ami 6 db ilyen ikon nevet tartalmazhat
+            //változó: vagyis változtatható az értéke, ellentéte a konstans, amit egyszer lehet megadni, utána nem változhat.
+            kartyapakli = new FontAwesomeIcon[6];
+
+            //0-tól 5-ig vannak a helyek ebben a tömbben
+            //feltöltjük ikonokkal
+            kartyapakli[0] = FontAwesomeIcon.Fax;
+            kartyapakli[1] = FontAwesomeIcon.Female;
+            kartyapakli[2] = FontAwesomeIcon.Download;
+            kartyapakli[3] = FontAwesomeIcon.Edge;
+            kartyapakli[4] = FontAwesomeIcon.Hashtag;
+            kartyapakli[5] = FontAwesomeIcon.Mars;
+
+            //létrehozunk egy elektronikus dobókockát
+            dobokocka = new Random();
 
             UjKartyaHuzasa();
 
@@ -96,28 +119,6 @@ namespace XamlGame
         /// </summary>
         private void UjKartyaHuzasa()
         {
-            //szigorúan típusos nyelv a C#, ezért megmondjuk, hogy a polcunkon mi
-            //lehet. Ezzel a polcra csak olyan dolgot tehetek, mást nem.
-            //a "polc" programozói neve: "tömb"
-
-            //var a variable rövidítése
-            //a variable neve: változó
-            //egy olyan "változót" hoztam létre, ami 6 db ilyen ikon nevet tartalmazhat
-            //változó: vagyis változtatható az értéke, ellentéte a konstans, amit egyszer lehet megadni, utána nem változhat.
-            var kartyapakli = new FontAwesomeIcon[6];
-
-            //0-tól 5-ig vannak a helyek ebben a tömbben
-            //feltöltjük ikonokkal
-            kartyapakli[0] = FontAwesomeIcon.Fax;
-            kartyapakli[1] = FontAwesomeIcon.Female;
-            kartyapakli[2] = FontAwesomeIcon.Download;
-            kartyapakli[3] = FontAwesomeIcon.Edge;
-            kartyapakli[4] = FontAwesomeIcon.Hashtag;
-            kartyapakli[5] = FontAwesomeIcon.Mars;
-
-            //létrehozunk egy elektronikus dobókockát
-            var dobokocka = new Random();
-
             //dobunk egyet 0 és 5 között
             var dobas = dobokocka.Next(0, 5);
 

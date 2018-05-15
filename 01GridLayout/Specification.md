@@ -28,9 +28,9 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 - [X] A visszajelzésünkre (egyforma/nem egyforma) 
 - [X] a játék jelzi egy zöld pipával/piros kereszttel, hogy a válaszunk helyes vagy helytelen.
 - [X] a játékot billentyûzettel lehessen játszani
-- [ ] A válasznak megfelelõ pontot számolja, 
-  - [ ] méri az egyes reakcióidõt 
-  - [ ] és az átlagos reakcióidõt is. 
+- [X] A válasznak megfelelõ pontot számolja, 
+  - [X] méri az egyes reakcióidõt 
+  - [X] és az átlagos reakcióidõt is. 
 - [ ] A játék meghatározott ideig tart, amit a kezdéstõl egy visszaszámláló óra jelez. 
 - [ ] A játék végén látjuk a pontszámunkat, 
 - [ ] és a top 5 pontszámot. 
