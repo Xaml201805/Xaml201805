@@ -39,7 +39,7 @@
 
             <WrapPanel Margin="5" HorizontalAlignment="Center">
                 <Label Content="Pontszám"/>
-                <Label Content="px"/>
+                <Label x:Name="LabelScore" Content="0"/>
                 <Label Content="Reakció idő"/>
                 <Label Content="rx"/>
                 <Label Content="Átlagos Reakció idő"/>

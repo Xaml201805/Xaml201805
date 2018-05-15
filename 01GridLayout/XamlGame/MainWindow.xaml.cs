@@ -24,6 +24,7 @@ namespace XamlGame
     public partial class MainWindow : Window
     {
         private FontAwesomeIcon elozoKartya;
+        private int Score;
 
         /// <summary>
         /// Az ablak un. létrehozó függvénye (constructor)
@@ -41,6 +42,7 @@ namespace XamlGame
             //letiltjuk az Igen/Nem gombokat
             ButtonYes.IsEnabled = false;
             ButtonNo.IsEnabled = false;
+            Score = 0;
 
             UjKartyaHuzasa();
 
@@ -119,6 +121,8 @@ namespace XamlGame
             CardLeft.Icon = FontAwesomeIcon.Times;
             CardLeft.Foreground = Brushes.Red;
 
+            Scoring();
+
             VisszajelzesEltuntetese();
 
         }
@@ -129,7 +133,15 @@ namespace XamlGame
             CardLeft.Icon = FontAwesomeIcon.Check;
             CardLeft.Foreground = Brushes.Green;
 
+            Scoring();
+
             VisszajelzesEltuntetese();
+        }
+
+        private void Scoring()
+        {
+            Score = Score + 1;
+            LabelScore.Content = Score;
         }
 
         private void VisszajelzesEltuntetese()
