@@ -28,6 +28,7 @@ namespace XamlGame
         private int score;
         private DispatcherTimer pendulumClock;
         private TimeSpan playTime;
+        private Stopwatch stopwatch;
 
         /// <summary>
         /// Az ablak un. létrehozó függvénye (constructor)
@@ -64,6 +65,9 @@ namespace XamlGame
             //mivel ez az óra azonnal elindul, állítsuk is meg: 
             //majd a Start gombra kell elindítani
             pendulumClock.Stop();
+
+            //stopperóra létrehozása az egyes reakciók mérésére.
+            stopwatch = new Stopwatch();
 
             UjKartyaHuzasa();
 
@@ -134,6 +138,8 @@ namespace XamlGame
             var animationIn = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(100));
             CardRight.BeginAnimation(OpacityProperty, animationIn);
 
+            //stopperórát elindítani
+            stopwatch.Restart();
         }
 
         private void ButtonYes_Click(object sender, RoutedEventArgs e)
@@ -191,6 +197,8 @@ namespace XamlGame
             { //ha rossz válasz után hívtuk
                 score = score - 100;
             }
+
+            LabelReactionTime.Content = $"{stopwatch.ElapsedMilliseconds}/{0}";
 
             LabelScore.Content = score;
         }
