@@ -29,6 +29,7 @@ namespace XamlGame
         private DispatcherTimer pendulumClock;
         private TimeSpan playTime;
         private Stopwatch stopwatch;
+        private List<long> listReactionTimes;
 
         /// <summary>
         /// Az ablak un. létrehozó függvénye (constructor)
@@ -68,6 +69,10 @@ namespace XamlGame
 
             //stopperóra létrehozása az egyes reakciók mérésére.
             stopwatch = new Stopwatch();
+
+            //az összes reakcióidőt tartalmazó lista létrehozása
+            listReactionTimes = new List<long>();
+
 
             UjKartyaHuzasa();
 
@@ -198,7 +203,18 @@ namespace XamlGame
                 score = score - 100;
             }
 
-            LabelReactionTime.Content = $"{stopwatch.ElapsedMilliseconds}/{0}";
+            //stopper állj (ez egyáltalán nem szükséges ebben az esetben)
+            //stopwatch.Stop();
+
+            //eltelt idő tárolása a listára
+            listReactionTimes.Add(stopwatch.ElapsedMilliseconds);
+
+            //kiszámoljuk az átlagot? Majd a dotnet kiszámolja!
+
+            //a lista sokoldalúságát kihasználva a listáról visszaolvassuk az utolsó reakcióidőt és az átlagot.
+            //annyi feladat van ezzel, hogy az átlag törtszámban adja az eredményt.
+            //ezért a végén egésszé alakítjuk
+            LabelReactionTime.Content = $"{listReactionTimes.Last()}/{(long)listReactionTimes.Average()}";
 
             LabelScore.Content = score;
         }
