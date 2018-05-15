@@ -25,7 +25,7 @@ namespace XamlGame
     public partial class MainWindow : Window
     {
         private FontAwesomeIcon elozoKartya;
-        private int score;
+        private long score;
         private DispatcherTimer pendulumClock;
         private TimeSpan playTime;
         private Stopwatch stopwatch;
@@ -194,14 +194,6 @@ namespace XamlGame
         /// </param>
         private void Scoring(bool isGoodAnswer)
         {
-            if (isGoodAnswer)
-            { //ha jó válasz után hívtuk
-                score = score + 100;
-            }
-            else
-            { //ha rossz válasz után hívtuk
-                score = score - 100;
-            }
 
             //stopper állj (ez egyáltalán nem szükséges ebben az esetben)
             //stopwatch.Stop();
@@ -260,6 +252,15 @@ namespace XamlGame
             //ezért a végén egésszé alakítjuk
 
             LabelReactionTime.Content = $"{listReactionTimes.Last()}/{(long)listReactionTimes.Average()}/{average1}/{average2}/{average3}/{average4}";
+
+            if (isGoodAnswer)
+            { //ha jó válasz után hívtuk
+                score = score + 100000/listReactionTimes.Last();  //minél gyorsabb valaki, annál jobban jutalmazzuk
+            }
+            else
+            { //ha rossz válasz után hívtuk
+                score = score - 100*(listReactionTimes.Last()/1000); //minél lassabb valaki, annál jobban büntessük
+            }
 
             LabelScore.Content = score;
         }
