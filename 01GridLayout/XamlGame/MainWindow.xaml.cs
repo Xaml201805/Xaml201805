@@ -96,12 +96,28 @@ namespace XamlGame
             //minden játék idításakor kell
             StartingState();
 
-            //todo: visszatölteni az előző játék eredményét
-
+            //visszatölteni az előző játék eredményét
             //A top 5 listánkat tartalmazó állomány neve
             top5Filename = "toplista.txt";
 
-            listTop5Score = new List<long>();
+            //figyelni, hogy az állomány létezik-e?
+
+            if (File.Exists(top5Filename))
+            { //ha létezik az állomány, akkor visszatöltjük
+                var fs = new FileStream(top5Filename, FileMode.Open);
+                var szovegesito = new XmlSerializer(typeof(List<long>));
+
+                //a Deserialize függvény általános object-tet ad vissza,
+                //ahhoz, hogy a mi változónkba ez be tudjuk tuszkolni,
+                //explicit módon meg kell mondani, hogy milyen típusra alakítsuk
+                listTop5Score = (List<long>)szovegesito.Deserialize(fs);
+            }
+            else
+            { //ha nem létezik, üres listával kezdünk
+                listTop5Score = new List<long>();
+            }
+
+            ShowTop5Data();
         }
 
 
@@ -160,9 +176,9 @@ namespace XamlGame
             //top 5 intézése
             //addig, amíg legfeljebb 5 elem van a listán, addig nem kell tenni semmit.
             //ha több, mint 5 elemünk van (tehát 6 db) akkor
-            if (listTop5Score.Count>5)
+            if (listTop5Score.Count > 5)
             {//sorbarendezés után a legkisebbet törölni kell
-                
+
                 //sorbarendezés
                 listTop5Score.Sort();
 
@@ -185,8 +201,13 @@ namespace XamlGame
             //majd a megadott file-ba kiiratjuk a listánkat.
             szovegesito.Serialize(fs, listTop5Score);
 
+            ShowTop5Data();
+        }
+
+        private void ShowTop5Data()
+        {
             //megjelenítjük a listát, érték szerint csökkenő sorrendben
-            ListBoxTop5.ItemsSource = new ObservableCollection<long>(listTop5Score.OrderByDescending(x=>x));
+            ListBoxTop5.ItemsSource = new ObservableCollection<long>(listTop5Score.OrderByDescending(x => x));
         }
 
         /// <summary>

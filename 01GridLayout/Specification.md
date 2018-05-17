@@ -33,7 +33,7 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
   - [X] és az átlagos reakcióidõt is. 
 - [ ] A játék meghatározott ideig tart, amit a kezdéstõl egy visszaszámláló óra jelez. 
 - [X] A játék végén látjuk a pontszámunkat, 
-- [ ] és a top 5 pontszámot. 
+- [X] és a top 5 pontszámot. 
 - [X] Ha akarjuk újrakezdhetjük a játékot, vagy kiléphetünk.
 
 ## A játék fõképernyõje
@@ -175,4 +175,5 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 ## Feladat: TOP 5 eredmény nyilvántartása és megjelenítése
 - tartsuk nyilván az eredményeket és mutassuk meg.
 - mindig csak a legjobb 5-öt mutassuk meg.
-- a top 5 listát elmenteni és a játék kezdetekor visszatölteni a legutolsó állapotot
+- a top 5 listát elmenteni 
+- és a játék kezdetekor visszatölteni a legutolsó állapotot
