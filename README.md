@@ -69,3 +69,5 @@ Mivel van csomagkezelőnk, a Visual Studio Community 2015 telepítése [adminisz
 
 #Házi feladat 5
 - A játék állapotot belső változóval megjeleníteni és azt használni
+- a játék jobbra és balra billentyűit csak akkor elfogadni, ha a megfelelő gomb elérhető.
+- a switch utasítás kipróbálása a példa alapján (áttérés if-ről switch-re)

@@ -414,15 +414,18 @@ namespace XamlGame
         {
             Debug.WriteLine(e.Key);
 
-            //todo: ha megvan az eset, további vizsgálat felesleges
+            //todo: itt is vizsgálni, hogy a gomb elérhető-e?
             if (e.Key==Key.Right)
             { // jobbranyíl: nem gomb
                 NoAnswer();
+                return;
             }
 
+            //todo: itt is vizsgálni, hogy a gomb elérhető-e?
             if (e.Key==Key.Left)
             { //balranyíl: igen gomb
                 YesAnswer();
+                return;
             }
 
             //Figyelem: figyelni kell arra, hogy a gomb látható és engedélyezve van-e
@@ -431,6 +434,7 @@ namespace XamlGame
                 && e.Key == Key.Up)      //ÉS felfelé nyíl jött
             { // indítás
                 StartGame();
+                return;
             }
 
             //Figyelem: figyelni kell arra, hogy a gomb látható és engedélyezve van-e
@@ -439,7 +443,27 @@ namespace XamlGame
                 && e.Key==Key.Multiply)
             { //csillag gomb: játék újrakezdése
                 StartingState();
+                return;
             }
+
+            ///Ctrl+K, Ctrl+C a kijelölt rész megjegyzésbe tétele
+            ///Ctrl+K, Ctrl+U a kijelölt rész megjegyzésből kivétele
+            //switch (e.Key)
+            //{
+            //    case Key.Left:
+            //        if (ButtonYes.IsEnabled)
+            //        {
+            //            YesAnswer();
+            //        }
+            //        break;
+            //    case Key.Up:
+            //        break;
+            //    case Key.Right:
+            //        break;
+            //    case Key.Multiply:
+            //        break;
+            //}
+
         }
     }
 }
