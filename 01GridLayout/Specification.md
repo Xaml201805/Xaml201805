@@ -172,4 +172,7 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
   - Ehhez idõmérõ idõmérõ infrastruktúra, valamilyen ismétlõdõ esemény,
     amire feliratkozva már tudjuk az idõt számolni.
 
-
+## Feladat: TOP 5 eredmény nyilvántartása és megjelenítése
+- tartsuk nyilván az eredményeket és mutassuk meg.
+- mindig csak a legjobb 5-öt mutassuk meg.
+- a top 5 listát elmenteni és a játék kezdetekor visszatölteni a legutlsó állapotot

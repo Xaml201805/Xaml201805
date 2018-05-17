@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using FontAwesome.WPF;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using System.Collections.ObjectModel;
 
 namespace XamlGame
 {
@@ -32,6 +33,7 @@ namespace XamlGame
         private List<long> listReactionTimes;
         private FontAwesomeIcon[] kartyapakli;
         private Random dobokocka;
+        private List<long> listTop5Score;
 
         /// <summary>
         /// Az ablak un. létrehozó függvénye (constructor)
@@ -90,6 +92,8 @@ namespace XamlGame
             //minden játék idításakor kell
             StartingState();
 
+            //todo: visszatölteni az előző játék eredményét
+            listTop5Score = new List<long>();
         }
 
 
@@ -142,6 +146,13 @@ namespace XamlGame
             //megmutatjuk a restart gombot
             ButtonRestart.Visibility = Visibility.Visible;
 
+            //elmentjük az utolsó játék pontszámát
+            listTop5Score.Add(score);
+
+            //todo: top 5 intézése
+
+            //megjelenítjük a listát, érték szerint csökkenő sorrendben
+            ListBoxTop5.ItemsSource = new ObservableCollection<long>(listTop5Score.OrderByDescending(x=>x));
         }
 
         /// <summary>
