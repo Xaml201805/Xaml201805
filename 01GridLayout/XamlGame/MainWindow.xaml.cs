@@ -114,7 +114,7 @@ namespace XamlGame
             score = 0;
             ShowScore();
 
-            playTime = TimeSpan.FromSeconds(0);
+            playTime = TimeSpan.FromSeconds(10);
             ShowPlayTime();
 
             //az összes reakcióidőt tartalmazó lista létrehozása
@@ -151,9 +151,9 @@ namespace XamlGame
         /// <param name="e"></param>
         private void ClockShock(object sender, EventArgs e)
         {
-            playTime = playTime + TimeSpan.FromSeconds(1);
+            playTime = playTime - TimeSpan.FromSeconds(1);
 
-            if (playTime > TimeSpan.FromSeconds(9))
+            if (playTime == TimeSpan.FromSeconds(0))
             { // vége a játéknak
                 FinalState();
             }
