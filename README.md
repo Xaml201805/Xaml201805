@@ -72,4 +72,10 @@ Mivel van csomagkezelőnk, a Visual Studio Community 2015 telepítése [adminisz
 - a játék jobbra és balra billentyűit csak akkor elfogadni, ha a megfelelő gomb elérhető.
 - a switch utasítás kipróbálása a példa alapján (áttérés if-ről switch-re)
 - a visszajelző (kereszt/pipa) animációt átteni xaml-be
-
+- érdemes felrajzolni azt, hogy a függvények hogyan hívják egymást
+- Meddig lehet eljutni a WPF-fel? [Lehetőségek](https://docs.microsoft.com/en-us/visualstudio/designers/introduction-to-wpf)
+- Hogyan érdemes tanulni?
+  - regisztráció a [githubra](https://github.com)
+  - markdown [használata](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+  - [#100DaysOfCode](https://medium.freecodecamp.org/the-crazy-history-of-the-100daysofcode-challenge-and-why-you-should-try-it-for-2018-6c89a76e298d): minden nap kódolj 100 napig. Amit csinálsz tedd közzé ezzel a hashteg-gel, ha máshol nem a #dotnetcapak.
+- válasszatok egy hobbi feladatot, és küldjétek el neke, hogy mit választottatok.
