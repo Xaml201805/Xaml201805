@@ -25,15 +25,24 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <fa:ImageAwesome x:Name="CardLeft"
                                  Margin="40"
                                  Icon="None" />
-                
+
                 <fa:ImageAwesome x:Name="CardRight"
                                  Margin="10"
                                  Grid.Column="1" 
-                                 Icon="None" />
+                                 Icon="None" >
+                    <!-- 
+                        ahhoz, hogy animálni tudjuk, kell a 
+                        definíció
+                    -->
+                    <fa:ImageAwesome.RenderTransform>
+                        <ScaleTransform x:Name="CardRightScaleTransform"/>
+                    </fa:ImageAwesome.RenderTransform>
+
+                </fa:ImageAwesome>
             </Grid>
 
 
@@ -64,18 +73,38 @@
                 </Button.Content>
                 <Button.Resources>
                     <Storyboard x:Key="CardRightDragNewCard">
-                        <DoubleAnimation From="1"
-                                         To="0"
-                                         BeginTime="00:00:00"
-                                         Duration="00:00:01"
+                        <!--
+                            Eltüntetjük a kártyát
+                        -->
+                        <DoubleAnimation From="1" To="0"
+                                         BeginTime="00:00:00" Duration="00:00:01"
                                          Storyboard.TargetName="CardRight"
                                          Storyboard.TargetProperty="(fa:ImageAwesome.Opacity)" />
+                        <DoubleAnimation From="1" To="0"
+                                         BeginTime="00:00:00" Duration="00:00:01"
+                                         Storyboard.TargetName="CardRightScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)" />
+                        <DoubleAnimation From="1" To="0"
+                                         BeginTime="00:00:00" Duration="00:00:01"
+                                         Storyboard.TargetName="CardRightScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)" />
+                        <!--
+                            Megjelenítjük a kártyát
+                        -->
                         <DoubleAnimation From="0"
                                          To="1"
                                          BeginTime="00:00:02"
                                          Duration="00:00:01"
                                          Storyboard.TargetName="CardRight"
                                          Storyboard.TargetProperty="(fa:ImageAwesome.Opacity)" />
+                        <DoubleAnimation From="0" To="1"
+                                         BeginTime="00:00:02" Duration="00:00:01"
+                                         Storyboard.TargetName="CardRightScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)" />
+                        <DoubleAnimation From="0" To="1"
+                                         BeginTime="00:00:02" Duration="00:00:01"
+                                         Storyboard.TargetName="CardRightScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)" />
                     </Storyboard>
                 </Button.Resources>
                 <Button.Triggers>
