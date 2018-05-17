@@ -8,6 +8,73 @@
         mc:Ignorable="d"
         KeyDown="Window_KeyDown"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Storyboard x:Key="CardRightDragNewCard">
+            <!--
+                            +++ Eltüntetjük a kártyát
+                        -->
+            <!--
+                            átlátszóvá tesszük
+                        -->
+            <DoubleAnimation From="1" To="0"
+                             BeginTime="00:00:00" Duration="00:00:00.2"
+                             Storyboard.TargetName="CardRight"
+                             Storyboard.TargetProperty="(fa:ImageAwesome.Opacity)" />
+            <!--
+                            összehúzzuk a kártyát (X és Y irányban)
+                        -->
+            <DoubleAnimation From="1" To="0"
+                             BeginTime="00:00:00" Duration="00:00:00.2"
+                             Storyboard.TargetName="CardRightScaleTransform"
+                             Storyboard.TargetProperty="(ScaleTransform.ScaleX)" />
+            <DoubleAnimation From="1" To="0"
+                             BeginTime="00:00:00" Duration="00:00:00.2"
+                             Storyboard.TargetName="CardRightScaleTransform"
+                             Storyboard.TargetProperty="(ScaleTransform.ScaleY)" />
+            <!--
+                forgatjuk a kártyát
+            -->
+            <DoubleAnimation From="0" To="180"
+                             BeginTime="00:00:00" Duration="00:00:00.2"
+                             Storyboard.TargetName="CardRighRotateTransform"
+                             Storyboard.TargetProperty="(RotateTransform.Angle)" />
+            <!--
+                Megjelenítjük a kártyát
+            -->
+            <!--
+                láthatóvá tesszük
+            -->
+            <DoubleAnimation From="0" To="1"
+                             BeginTime="00:00:00.3" Duration="00:00:00.2"
+                             Storyboard.TargetName="CardRight"
+                             Storyboard.TargetProperty="(fa:ImageAwesome.Opacity)" />
+            <!--
+                kinyújtjuk a kártyát
+            -->
+            <DoubleAnimation From="0" To="1"
+                             BeginTime="00:00:00.3" Duration="00:00:00.2"
+                             Storyboard.TargetName="CardRightScaleTransform"
+                             Storyboard.TargetProperty="(ScaleTransform.ScaleX)" />
+            <DoubleAnimation From="0" To="1"
+                             BeginTime="00:00:00.3" Duration="00:00:00.2"
+                             Storyboard.TargetName="CardRightScaleTransform"
+                             Storyboard.TargetProperty="(ScaleTransform.ScaleY)" />
+            <!--
+                forgatjuk a kártyát
+            -->
+             <DoubleAnimation From="180" To="360"
+                              BeginTime="00:00:00.3" Duration="00:00:00.2"
+                              Storyboard.TargetName="CardRighRotateTransform"
+                              Storyboard.TargetProperty="(RotateTransform.Angle)" />
+        </Storyboard>
+        <Style x:Key="ButtonDragNewCardStyle" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Foreground" Value="Coral" />
+            </Style.Setters >
+            <Style.Triggers>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -51,7 +118,6 @@
                 </fa:ImageAwesome>
             </Grid>
 
-
             <WrapPanel Margin="5" HorizontalAlignment="Right">
                 <Label Content="Idő"/>
                 <Label x:Name="LabelPlayTime" Content="00:00"/>
@@ -63,6 +129,7 @@
             </WrapPanel>
             <Button x:Name="ButtonYes" Grid.Row="2"
                     Margin="5" Padding="10" 
+                    Style="{StaticResource ButtonDragNewCardStyle}"
                     HorizontalAlignment="Left" 
                     Click="ButtonYes_Click" 
                     >
@@ -77,70 +144,6 @@
                                    VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button.Content>
-                <Button.Resources>
-                    <Storyboard x:Key="CardRightDragNewCard">
-                        <!--
-                            +++ Eltüntetjük a kártyát
-                        -->
-                        <!--
-                            átlátszóvá tesszük
-                        -->
-                        <DoubleAnimation From="1" To="0"
-                                         BeginTime="00:00:00" Duration="00:00:01"
-                                         Storyboard.TargetName="CardRight"
-                                         Storyboard.TargetProperty="(fa:ImageAwesome.Opacity)" />
-                        <!--
-                            összehúzzuk a kártyát (X és Y irányban)
-                        -->
-                        <DoubleAnimation From="1" To="0"
-                                         BeginTime="00:00:00" Duration="00:00:01"
-                                         Storyboard.TargetName="CardRightScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)" />
-                        <DoubleAnimation From="1" To="0"
-                                         BeginTime="00:00:00" Duration="00:00:01"
-                                         Storyboard.TargetName="CardRightScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)" />
-                        <!--
-                            forgatjuk a kártyát
-                        -->
-                        <DoubleAnimation From="0" To="180"
-                                         BeginTime="00:00:00" Duration="00:00:01"
-                                         Storyboard.TargetName="CardRighRotateTransform"
-                                         Storyboard.TargetProperty="(RotateTransform.Angle)" />
-                        <!--
-                            Megjelenítjük a kártyát
-                        -->
-                        <!--
-                            láthatóvá tesszük
-                        -->
-                        <DoubleAnimation From="0"
-                                         To="1"
-                                         BeginTime="00:00:02"
-                                         Duration="00:00:01"
-                                         Storyboard.TargetName="CardRight"
-                                         Storyboard.TargetProperty="(fa:ImageAwesome.Opacity)" />
-                        <!--
-                            kinyújtjuk a kártyát
-                        -->
-                        <DoubleAnimation From="0" To="1"
-                                         BeginTime="00:00:02" Duration="00:00:01"
-                                         Storyboard.TargetName="CardRightScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)" />
-                        <DoubleAnimation From="0" To="1"
-                                         BeginTime="00:00:02" Duration="00:00:01"
-                                         Storyboard.TargetName="CardRightScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)" />
-                        <!--
-                            forgatjuk a kártyát
-                        -->
-                        <DoubleAnimation From="180"
-                                         To="0"
-                                         BeginTime="00:00:02"
-                                         Duration="00:00:01"
-                                         Storyboard.TargetName="CardRighRotateTransform"
-                                         Storyboard.TargetProperty="(RotateTransform.Angle)" />
-                    </Storyboard>
-                </Button.Resources>
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="Button.Click">
                         <BeginStoryboard Storyboard="{StaticResource CardRightDragNewCard}" />
@@ -149,6 +152,7 @@
             </Button>
             <Button x:Name="ButtonNo" Grid.Row="2"
                     Margin="5" Padding="10" 
+                    Style="{StaticResource ButtonDragNewCardStyle}"
                     HorizontalAlignment="Center" 
                     Click="ButtonNo_Click" 
                     >
@@ -169,6 +173,11 @@
                                    />
                     </Grid>
                 </Button.Content>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Click">
+                        <BeginStoryboard Storyboard="{StaticResource CardRightDragNewCard}" />
+                    </EventTrigger>
+                </Button.Triggers>
             </Button>
             <Button x:Name="ButtonStart"
                     Grid.Row="2"
