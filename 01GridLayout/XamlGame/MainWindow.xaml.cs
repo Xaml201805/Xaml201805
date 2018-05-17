@@ -414,11 +414,7 @@ namespace XamlGame
         {
             Debug.WriteLine(e.Key);
 
-            if (e.Key==Key.Up)
-            { // felfelé nyíl: indítás
-                StartGame();
-            }
-
+            //todo: ha megvan az eset, további vizsgálat felesleges
             if (e.Key==Key.Right)
             { // jobbranyíl: nem gomb
                 NoAnswer();
@@ -429,6 +425,21 @@ namespace XamlGame
                 YesAnswer();
             }
 
+            //Figyelem: figyelni kell arra, hogy a gomb látható és engedélyezve van-e
+            if (ButtonStart.IsEnabled    //az indítás gomb engedélyezve van (kattintható) 
+                && ButtonStart.IsVisible //ÉS az indítás gomb látható 
+                && e.Key == Key.Up)      //ÉS felfelé nyíl jött
+            { // indítás
+                StartGame();
+            }
+
+            //Figyelem: figyelni kell arra, hogy a gomb látható és engedélyezve van-e
+            if (ButtonRestart.IsEnabled
+                && ButtonRestart.IsVisible
+                && e.Key==Key.Multiply)
+            { //csillag gomb: játék újrakezdése
+                StartingState();
+            }
         }
     }
 }

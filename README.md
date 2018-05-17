@@ -66,3 +66,6 @@ Mivel van csomagkezelőnk, a Visual Studio Community 2015 telepítése [adminisz
 - a "*" billentyű a játék végén kezdje újra a játékot
 - kitalálni, hogy előre számláló idő helyett, hogy lehet visszaszámlálást csinálni?
 - a top 5 nyilvántartásán gondolkodni
+
+#Házi feladat 5
+- A játék állapotot belső változóval megjeleníteni és azt használni
