@@ -175,4 +175,4 @@ Szeretnénk készíteni egy reakcióidõ mérõ játékot. A játék egymás után mutat kárt
 ## Feladat: TOP 5 eredmény nyilvántartása és megjelenítése
 - tartsuk nyilván az eredményeket és mutassuk meg.
 - mindig csak a legjobb 5-öt mutassuk meg.
-- a top 5 listát elmenteni és a játék kezdetekor visszatölteni a legutlsó állapotot
+- a top 5 listát elmenteni és a játék kezdetekor visszatölteni a legutolsó állapotot

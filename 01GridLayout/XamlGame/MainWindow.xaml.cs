@@ -17,6 +17,8 @@ using FontAwesome.WPF;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace XamlGame
 {
@@ -34,6 +36,8 @@ namespace XamlGame
         private FontAwesomeIcon[] kartyapakli;
         private Random dobokocka;
         private List<long> listTop5Score;
+        private string top5Filename;
+
 
         /// <summary>
         /// Az ablak un. létrehozó függvénye (constructor)
@@ -93,6 +97,10 @@ namespace XamlGame
             StartingState();
 
             //todo: visszatölteni az előző játék eredményét
+
+            //A top 5 listánkat tartalmazó állomány neve
+            top5Filename = "toplista.txt";
+
             listTop5Score = new List<long>();
         }
 
@@ -149,7 +157,7 @@ namespace XamlGame
             //elmentjük az utolsó játék pontszámát
             listTop5Score.Add(score);
 
-            //todo: top 5 intézése
+            //top 5 intézése
             //addig, amíg legfeljebb 5 elem van a listán, addig nem kell tenni semmit.
             //ha több, mint 5 elemünk van (tehát 6 db) akkor
             if (listTop5Score.Count>5)
@@ -163,6 +171,19 @@ namespace XamlGame
                 listTop5Score.RemoveAt(0);
 
             }
+
+            //top 5 lista mentése
+            //adatfolyamot hozunk létre, amibe beleírjuk a top 5 listánk tartalmát.
+            //a név a közös név, amit osztályszinten tárolunk
+            //az állományt pedig ha nincs létrehozzuk, ha van felülírjuk
+            var fs = new FileStream(top5Filename, FileMode.Create);
+            //létrehozunk egy olyan objektumot, ami a listánkból olyan szöveget gyárt, 
+            //amit aztán vissza tud olvasni.
+            //ez a szöveg XML formátumú lesz, nyitó és záró tag-ekkel, mint az XAML
+            var szovegesito = new XmlSerializer(typeof(List<long>));
+
+            //majd a megadott file-ba kiiratjuk a listánkat.
+            szovegesito.Serialize(fs, listTop5Score);
 
             //megjelenítjük a listát, érték szerint csökkenő sorrendben
             ListBoxTop5.ItemsSource = new ObservableCollection<long>(listTop5Score.OrderByDescending(x=>x));
