@@ -150,6 +150,19 @@ namespace XamlGame
             listTop5Score.Add(score);
 
             //todo: top 5 intézése
+            //addig, amíg legfeljebb 5 elem van a listán, addig nem kell tenni semmit.
+            //ha több, mint 5 elemünk van (tehát 6 db) akkor
+            if (listTop5Score.Count>5)
+            {//sorbarendezés után a legkisebbet törölni kell
+                
+                //sorbarendezés
+                listTop5Score.Sort();
+
+                //az elsőt, ami a legkisebb, töröljük
+                //listTop5Score.Remove(listTop5Score[0]);  //így is lehetne, de ez még kevesebb munka
+                listTop5Score.RemoveAt(0);
+
+            }
 
             //megjelenítjük a listát, érték szerint csökkenő sorrendben
             ListBoxTop5.ItemsSource = new ObservableCollection<long>(listTop5Score.OrderByDescending(x=>x));
