@@ -252,16 +252,16 @@ namespace XamlGame
             //eseményvezérlőiben is látszik, így nem lehet lokális változó
             elozoKartya = CardRight.Icon;
 
-            //eltüntetni az előző kártyát
-            var animationOut = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(100));
-            CardRight.BeginAnimation(OpacityProperty, animationOut);
+            //eltüntetni az előző kártyát: átköltözik az XAML-be
+            //var animationOut = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(100));
+            //CardRight.BeginAnimation(OpacityProperty, animationOut);
 
             //veszem a kártyapakli dobásnak megfelelő elemét és megjelenítem.
             CardRight.Icon = kartyapakli[dobas];
 
-            //megjeleníteni az új kártyát
-            var animationIn = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(100));
-            CardRight.BeginAnimation(OpacityProperty, animationIn);
+            //megjeleníteni az új kártyát: átköltözik az XAML-be
+            //var animationIn = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(100));
+            //CardRight.BeginAnimation(OpacityProperty, animationIn);
 
             //stopperórát elindítani
             stopwatch.Restart();
