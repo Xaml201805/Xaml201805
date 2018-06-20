@@ -192,7 +192,11 @@
                     Click="ButtonNo_Click" 
                     Background="Red"
                     BorderBrush="Red"
+                    RenderTransformOrigin="0.5,0.5"
                     >
+                <Button.RenderTransform>
+                    <ScaleTransform/>
+                </Button.RenderTransform>
                 <Button.Content>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -211,8 +215,34 @@
                     </Grid>
                 </Button.Content>
                 <Button.Triggers>
+                    <!--Feliratkozunk a click eseményre, így nem csak az eseményvezérlő
+                    függvény fut itt le, hanem ez az animáció is-->
                     <EventTrigger RoutedEvent="Button.Click">
                         <BeginStoryboard Storyboard="{StaticResource CardRightDragNewCard}" />
+                    </EventTrigger>
+                    <!--Ha az egérmutató a gomb felé kerül, 
+                    akkor váltódik ki ez az esemény-->
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                                                 To="1.2" Duration="0:0:0.2" />
+                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                                                 To="1.2" Duration="0:0:0.2" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <!--ha az egérmutató elhagyja a gomb fölötti részt-->
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                                                 To="1" Duration="0:0:0.2" />
+                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                                                 To="1" Duration="0:0:0.2" />
+                            </Storyboard>
+                        </BeginStoryboard>
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
