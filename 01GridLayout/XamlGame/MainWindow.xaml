@@ -77,7 +77,10 @@
                 <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
                 <Setter Property="RenderTransform">
                     <Setter.Value>
-                        <ScaleTransform/>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <RotateTransform />
+                        </TransformGroup>
                     </Setter.Value>
                 </Setter>
             </Style.Setters >
@@ -111,10 +114,12 @@
                 <EventTrigger RoutedEvent="MouseEnter">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
                                                  To="1.2" Duration="0:0:0.2" />
-                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
                                                  To="1.2" Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(TransformGroup.Children)[1].(RotateTransform.Angle)"
+                                                 To="15" Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
@@ -123,10 +128,12 @@
                 <EventTrigger RoutedEvent="MouseLeave">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
                                                  To="1" Duration="0:0:0.2" />
-                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
                                                  To="1" Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(TransformGroup.Children)[1].(RotateTransform.Angle)"
+                                                 To="0" Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
