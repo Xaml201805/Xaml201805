@@ -67,12 +67,23 @@
                               Storyboard.TargetName="CardRighRotateTransform"
                               Storyboard.TargetProperty="(RotateTransform.Angle)" />
         </Storyboard>
-        <Style x:Key="ButtonDragNewCardStyle" TargetType="{x:Type Button}">
+        <Style x:Key="ButtonBaseStyle" TargetType="{x:Type Button}">
             <Style.Setters>
-                <Setter Property="Foreground" Value="Coral" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontWeight" Value="Bold" />
             </Style.Setters >
             <Style.Triggers>
             </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonBlueStyle" TargetType="{x:Type Button}" 
+               BasedOn="{StaticResource ButtonBaseStyle}">
+            <Style.Setters>
+                <Setter Property="Background" Value="Blue" />
+                <Setter Property="BorderBrush" Value="Blue" />
+            </Style.Setters>
         </Style>
     </Window.Resources>
     <Grid>
@@ -128,8 +139,9 @@
                        />
             </WrapPanel>
             <Button x:Name="ButtonYes" Grid.Row="2"
-                    Margin="5" Padding="10" 
-                    Style="{StaticResource ButtonDragNewCardStyle}"
+                    Style="{StaticResource ButtonBaseStyle}"
+                    Background="Green"
+                    BorderBrush="Green"
                     HorizontalAlignment="Left" 
                     Click="ButtonYes_Click" 
                     >
@@ -151,10 +163,11 @@
                 </Button.Triggers>
             </Button>
             <Button x:Name="ButtonNo" Grid.Row="2"
-                    Margin="5" Padding="10" 
-                    Style="{StaticResource ButtonDragNewCardStyle}"
+                    Style="{StaticResource ButtonBaseStyle}"
                     HorizontalAlignment="Center" 
                     Click="ButtonNo_Click" 
+                    Background="Red"
+                    BorderBrush="Red"
                     >
                 <Button.Content>
                     <Grid>
@@ -181,7 +194,9 @@
             </Button>
             <Button x:Name="ButtonStart"
                     Grid.Row="2"
-                    Margin="5" Padding="10" 
+                    Style="{StaticResource ButtonBlueStyle}"
+                    Background="Blue"
+                    BorderBrush="Blue"
                     HorizontalAlignment="Right" 
                     Click="ButtonStart_Click" 
                     >
@@ -198,10 +213,10 @@
 
             <Button x:Name="ButtonRestart"
                     Grid.Row="2"
-                    Margin="5" Padding="10" 
                     HorizontalAlignment="Right" 
                     Click="ButtonRestart_Click"
                     Visibility="Hidden" 
+                    Style="{StaticResource ButtonBlueStyle}"
                     >
                 <Button.Content>
                     <DockPanel>
