@@ -69,11 +69,17 @@
         </Storyboard>
         <Style x:Key="ButtonBaseStyle" TargetType="{x:Type Button}">
             <Style.Setters>
-                <Setter Property="Margin" Value="5" />
+                <Setter Property="Margin" Value="15" />
                 <Setter Property="Padding" Value="10" />
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform/>
+                    </Setter.Value>
+                </Setter>
             </Style.Setters >
             <Style.Triggers>
                 <!--ez egy olyan feltételvizsgálatot definiál, amire 
@@ -100,6 +106,31 @@
                         </BeginStoryboard>
                     </Trigger.ExitActions>
                 </Trigger>
+                <!--Ha az egérmutató a gomb felé kerül, 
+                    akkor váltódik ki ez az esemény-->
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                                                 To="1.2" Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                                                 To="1.2" Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <!--ha az egérmutató elhagyja a gomb fölötti részt-->
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                                                 To="1" Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                                                 To="1" Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
             </Style.Triggers>
         </Style>
         <Style x:Key="ButtonBlueStyle" TargetType="{x:Type Button}" 
@@ -192,11 +223,7 @@
                     Click="ButtonNo_Click" 
                     Background="Red"
                     BorderBrush="Red"
-                    RenderTransformOrigin="0.5,0.5"
                     >
-                <Button.RenderTransform>
-                    <ScaleTransform/>
-                </Button.RenderTransform>
                 <Button.Content>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -219,30 +246,6 @@
                     függvény fut itt le, hanem ez az animáció is-->
                     <EventTrigger RoutedEvent="Button.Click">
                         <BeginStoryboard Storyboard="{StaticResource CardRightDragNewCard}" />
-                    </EventTrigger>
-                    <!--Ha az egérmutató a gomb felé kerül, 
-                    akkor váltódik ki ez az esemény-->
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
-                                                 To="1.2" Duration="0:0:0.2" />
-                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
-                                                 To="1.2" Duration="0:0:0.2" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-
-                    <!--ha az egérmutató elhagyja a gomb fölötti részt-->
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
-                                                 To="1" Duration="0:0:0.2" />
-                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
-                                                 To="1" Duration="0:0:0.2" />
-                            </Storyboard>
-                        </BeginStoryboard>
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
