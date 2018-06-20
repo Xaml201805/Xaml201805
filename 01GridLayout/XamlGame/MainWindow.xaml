@@ -67,13 +67,10 @@
                               Storyboard.TargetName="CardRighRotateTransform"
                               Storyboard.TargetProperty="(RotateTransform.Angle)" />
         </Storyboard>
-        <Style x:Key="ButtonBaseStyle" TargetType="{x:Type Button}">
+        <!--Nem csak gombra szeretném felhasználni ezt a csomagot, hanem a lehető
+        legszélesebb körre, ezért a FrameworkElement target-->
+        <Style x:Key="BaseAnimationStyle" TargetType="{x:Type FrameworkElement}">
             <Style.Setters>
-                <Setter Property="Margin" Value="15" />
-                <Setter Property="Padding" Value="10" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="FontSize" Value="15" />
-                <Setter Property="FontWeight" Value="Bold" />
                 <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
                 <Setter Property="RenderTransform">
                     <Setter.Value>
@@ -83,32 +80,8 @@
                         </TransformGroup>
                     </Setter.Value>
                 </Setter>
-            </Style.Setters >
+            </Style.Setters>
             <Style.Triggers>
-                <!--ez egy olyan feltételvizsgálatot definiál, amire 
-                aztán lehet felad végrehajtást felfűzni-->
-                <Trigger Property="IsEnabled" Value="true">
-                    <!--Ez akkor fut le (egyszer), ha 
-                    a fenti feltétel IGAZzá válik-->
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                                 To="1.0" Duration="0:0:0.5" />
-                            </Storyboard>
-                        </BeginStoryboard>    
-                    </Trigger.EnterActions>
-                    <!--Ez akkor fut le (egyszer), ha
-                    a fenti feltétel HAMISSÁ válik-->
-                    <Trigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                                 To="0.0" Duration="0:0:0.5" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.ExitActions>
-                </Trigger>
                 <!--Ha az egérmutató a gomb felé kerül, 
                     akkor váltódik ki ez az esemény-->
                 <EventTrigger RoutedEvent="MouseEnter">
@@ -137,6 +110,43 @@
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        
+        <Style x:Key="ButtonBaseStyle" TargetType="{x:Type Button}"
+               BasedOn="{StaticResource BaseAnimationStyle}">
+            <Style.Setters>
+                <Setter Property="Margin" Value="15" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </Style.Setters >
+            <Style.Triggers>
+                <!--ez egy olyan feltételvizsgálatot definiál, amire 
+                aztán lehet felad végrehajtást felfűzni-->
+                <Trigger Property="IsEnabled" Value="true">
+                    <!--Ez akkor fut le (egyszer), ha 
+                    a fenti feltétel IGAZzá válik-->
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="1.0" Duration="0:0:0.5" />
+                            </Storyboard>
+                        </BeginStoryboard>    
+                    </Trigger.EnterActions>
+                    <!--Ez akkor fut le (egyszer), ha
+                    a fenti feltétel HAMISSÁ válik-->
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.0" Duration="0:0:0.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
 
             </Style.Triggers>
         </Style>
@@ -171,6 +181,7 @@
                                  Icon="None" />
 
                 <fa:ImageAwesome x:Name="CardRight"
+                                 Style="{StaticResource BaseAnimationStyle}"
                                  Margin="10"
                                  Grid.Column="1" 
                                  Icon="None" RenderTransformOrigin="0.5,0.5">
@@ -295,7 +306,9 @@
 
 
         </Grid>
-        <ListBox x:Name="ListBoxTop5" Width="120">
+        <ListBox x:Name="ListBoxTop5" 
+                 Style="{StaticResource BaseAnimationStyle}"
+                 Width="120">
             
         </ListBox>
     </Grid>

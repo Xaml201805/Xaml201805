@@ -130,3 +130,4 @@ felhasználhatjuk.
 
 # Házi feladat
 - Disabled állapotú gomb átszínezése
+- 
