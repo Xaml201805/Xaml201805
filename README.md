@@ -107,3 +107,5 @@ Eseménykezelés
                                              +--------------------------->
 
 ```
+# Házi feladat
+- Disabled állapotú gomb átszínezése

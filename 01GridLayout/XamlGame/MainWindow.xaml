@@ -76,6 +76,30 @@
                 <Setter Property="FontWeight" Value="Bold" />
             </Style.Setters >
             <Style.Triggers>
+                <!--ez egy olyan feltételvizsgálatot definiál, amire 
+                aztán lehet felad végrehajtást felfűzni-->
+                <Trigger Property="IsEnabled" Value="true">
+                    <!--Ez akkor fut le (egyszer), ha 
+                    a fenti feltétel IGAZzá válik-->
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="1.0" Duration="0:0:0.5" />
+                            </Storyboard>
+                        </BeginStoryboard>    
+                    </Trigger.EnterActions>
+                    <!--Ez akkor fut le (egyszer), ha
+                    a fenti feltétel HAMISSÁ válik-->
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.0" Duration="0:0:0.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
             </Style.Triggers>
         </Style>
         <Style x:Key="ButtonBlueStyle" TargetType="{x:Type Button}" 
