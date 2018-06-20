@@ -79,3 +79,31 @@ Mivel van csomagkezelőnk, a Visual Studio Community 2015 telepítése [adminisz
   - markdown [használata](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
   - [#100DaysOfCode](https://medium.freecodecamp.org/the-crazy-history-of-the-100daysofcode-challenge-and-why-you-should-try-it-for-2018-6c89a76e298d): minden nap kódolj 100 napig. Amit csinálsz tedd közzé ezzel a hashteg-gel, ha máshol nem a #dotnetcapak.
 - válasszatok egy hobbi feladatot, és küldjétek el neke, hogy mit választottatok.
+
+
+
+Eseménykezelés
+```
+              ^----------------------------->+
+              |                              v
+              |
++-------------+----------------+    +----------------+    +------------------------------+
+|                              |    |                |    |                              |
+|                              |    |  Eseménylista  |    |                              |
+|    Hívó fél                  |    |                |    |    Hívott fél                |
+|                              |    |  +----------+  |    |                              |
+|                              |    |                |    |                              |
+|                              |    |  +----------+  |    |                              |
+|                              |    |                |    |                              |
+|                              |    |  +----------+  |    |                              |
+|                              |    |                |    |                              |
+|                              |    |  +----------+  |    |                              |
+|                              |    |                |    |                              |
+|                              |    |                |    |                              |
++------------------------------+    +--------+-------+    +--------------+---------------+
+                                             |                           ^
+                                             |                           |
+                                             v                           |
+                                             +--------------------------->
+
+```

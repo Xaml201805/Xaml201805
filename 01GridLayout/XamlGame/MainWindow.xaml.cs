@@ -19,6 +19,7 @@ using System.Windows.Threading;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Xml.Serialization;
+using System.Windows.Controls.Primitives;
 
 namespace XamlGame
 {
@@ -481,16 +482,18 @@ namespace XamlGame
             Debug.WriteLine(e.Key);
 
             //todo: itt is vizsgálni, hogy a gomb elérhető-e?
-            if (e.Key==Key.Right)
+            if (ButtonNo.IsEnabled
+                && e.Key==Key.Right)
             { // jobbranyíl: nem gomb
-                NoAnswer();
+                ButtonNo.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                 return;
             }
 
             //todo: itt is vizsgálni, hogy a gomb elérhető-e?
-            if (e.Key==Key.Left)
+            if (ButtonYes.IsEnabled
+                && e.Key==Key.Left)
             { //balranyíl: igen gomb
-                YesAnswer();
+                ButtonYes.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                 return;
             }
 
@@ -499,7 +502,7 @@ namespace XamlGame
                 && ButtonStart.IsVisible //ÉS az indítás gomb látható 
                 && e.Key == Key.Up)      //ÉS felfelé nyíl jött
             { // indítás
-                StartGame();
+                ButtonStart.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                 return;
             }
 
@@ -508,7 +511,7 @@ namespace XamlGame
                 && ButtonRestart.IsVisible
                 && e.Key==Key.Multiply)
             { //csillag gomb: játék újrakezdése
-                StartingState();
+                ButtonRestart.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                 return;
             }
 
